@@ -1,0 +1,9 @@
+Licenses of this repository
+
+- Hardware (mechanics/, electronics/): CERN Open Hardware Licence Version 2 - Permissive (CERN-OHL-P-2.0),
+  see LICENSES/CERN-OHL-P-2.0.txt
+- Firmware (firmware/): MIT License, see LICENSES/MIT.txt
+- Documentation and renders (docs/ and everything else): Creative Commons Attribution 4.0 International (CC-BY-4.0),
+  see LICENSES/CC-BY-4.0.txt
+
+Copyright (c) 2026 Makehare

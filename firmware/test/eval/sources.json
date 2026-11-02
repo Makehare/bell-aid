@@ -1,0 +1,1209 @@
+{
+ "freesound": [
+  {
+   "id": 376945,
+   "title": "doorbell.wav",
+   "user": "Mystikuum",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/Mystikuum/sounds/376945/",
+   "preview": "https://cdn.freesound.org/previews/376/376945_1643758-hq.mp3",
+   "name": "dingdong-a",
+   "kind": "ding-dong (two strikes)",
+   "rings": [
+    8.5,
+    18.0,
+    27.5,
+    36.4
+   ],
+   "note": "first ring in the file is cut off, not used"
+  },
+  {
+   "id": 455760,
+   "title": "doorbell apartment 3 times.flac",
+   "user": "kyles",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/kyles/sounds/455760/",
+   "preview": "https://cdn.freesound.org/previews/455/455760_612689-hq.mp3",
+   "name": "strike-b",
+   "kind": "single strike, long decay",
+   "rings": [
+    0.2,
+    6.2,
+    14.2
+   ],
+   "note": ""
+  },
+  {
+   "id": 491404,
+   "title": "Door chimes",
+   "user": "IENBA",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/IENBA/sounds/491404/",
+   "preview": "https://cdn.freesound.org/previews/491/491404_9616576-hq.mp3",
+   "name": "chime-cluster",
+   "kind": "multi-tone chime, ~3 s with decay",
+   "rings": [
+    0.05,
+    7.35,
+    14.5,
+    24.4
+   ],
+   "note": ""
+  },
+  {
+   "id": 438206,
+   "title": "G19-09-Ding-dong Doorbell.wav",
+   "user": "craigsmith",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/craigsmith/sounds/438206/",
+   "preview": "https://cdn.freesound.org/previews/438/438206_2524442-hq.mp3",
+   "name": "dingdong-c",
+   "kind": "ding-dong (two strikes)",
+   "rings": [
+    5.75,
+    13.1,
+    20.4
+   ],
+   "note": "speech at the start of the file, not used"
+  },
+  {
+   "id": 368155,
+   "title": "Westminster Default.wav",
+   "user": "GameBoy",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/GameBoy/sounds/368155/",
+   "preview": "https://cdn.freesound.org/previews/368/368155_6770584-hq.mp3",
+   "name": "westminster-a",
+   "kind": "electronic Westminster melody, 8 notes in two phrases with a pause, ~8.4 s",
+   "rings": [
+    0.2
+   ],
+   "ring_s": 8.6,
+   "note": "one ring per recording (an electronic chime repeats identically): held-out rings are re-renders"
+  },
+  {
+   "id": 417016,
+   "title": "Westminster Doorbell Melody 2.wav",
+   "user": "GameBoy",
+   "license": "Attribution NonCommercial",
+   "role": "bell",
+   "url": "https://freesound.org/people/GameBoy/sounds/417016/",
+   "preview": "https://cdn.freesound.org/previews/417/417016_6770584-hq.mp3",
+   "name": "westminster-b",
+   "kind": "electronic Westminster melody, 8 sustained notes, ~11 s (template keeps the first 8 s)",
+   "rings": [
+    0.0
+   ],
+   "ring_s": 11.2,
+   "note": "one ring per recording (an electronic chime repeats identically): held-out rings are re-renders"
+  },
+  {
+   "id": 317330,
+   "title": "electric_doorbel.wav",
+   "user": "Peacewaves",
+   "license": "Attribution",
+   "role": "bell",
+   "url": "https://freesound.org/people/Peacewaves/sounds/317330/",
+   "preview": "https://cdn.freesound.org/previews/317/317330_5393440-hq.mp3",
+   "name": "electric-dingdong",
+   "kind": "electric ding-dong",
+   "rings": [
+    6.15,
+    11.15,
+    19.9
+   ],
+   "note": "first ring in the file is cut off, not used"
+  },
+  {
+   "id": 640767,
+   "title": "several shots of doorbell.wav",
+   "user": "fabiopx",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/fabiopx/sounds/640767/",
+   "preview": "https://cdn.freesound.org/previews/640/640767_1585182-hq.mp3",
+   "name": "dingdong-d",
+   "kind": "ding-dong (two strikes)",
+   "rings": [
+    0.45,
+    7.35,
+    12.0,
+    17.6,
+    22.5,
+    26.3,
+    30.9
+   ],
+   "note": ""
+  },
+  {
+   "id": 553508,
+   "title": "door bell nice soft ring sound effect",
+   "user": "Garuda1982",
+   "license": "Attribution",
+   "role": "bell",
+   "url": "https://freesound.org/people/Garuda1982/sounds/553508/",
+   "preview": "https://cdn.freesound.org/previews/553/553508_2061858-hq.mp3",
+   "name": "mech-bell",
+   "kind": "mechanical bell, rapid strikes",
+   "rings": [
+    1.2,
+    8.7,
+    19.5,
+    30.7
+   ],
+   "note": ""
+  },
+  {
+   "id": 81065,
+   "title": "Tuerglocke4.mp3",
+   "user": "burkay",
+   "license": "Attribution NonCommercial",
+   "role": "bell",
+   "url": "https://freesound.org/people/burkay/sounds/81065/",
+   "preview": "https://cdn.freesound.org/previews/81/81065_760102-hq.mp3",
+   "name": "buzzer-tone",
+   "kind": "buzzer with tone, 2-3 s",
+   "rings": [
+    0.2,
+    6.2,
+    12.6,
+    19.2
+   ],
+   "note": ""
+  },
+  {
+   "id": 330400,
+   "title": "Doorbell harsh",
+   "user": "dav0r",
+   "license": "Creative Commons 0",
+   "role": "bell",
+   "url": "https://freesound.org/people/dav0r/sounds/330400/",
+   "preview": "https://cdn.freesound.org/previews/330/330400_1303681-hq.mp3",
+   "name": "buzzer-held",
+   "kind": "harsh buzzer held 2.6-9 s",
+   "rings": [
+    0.4,
+    8.3,
+    19.2
+   ],
+   "note": "length depends on how long the button is held"
+  },
+  {
+   "id": 442550,
+   "title": "muffledtv.mp3",
+   "user": "tayingalive",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/tayingalive/sounds/442550/",
+   "preview": "https://cdn.freesound.org/previews/442/442550_5458397-hq.mp3"
+  },
+  {
+   "id": 54928,
+   "title": "Television 01 080606.wav",
+   "user": "LG",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/LG/sounds/54928/",
+   "preview": "https://cdn.freesound.org/previews/54/54928_36188-hq.mp3"
+  },
+  {
+   "id": 474395,
+   "title": "Television News in Background",
+   "user": "jasminesound",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/jasminesound/sounds/474395/",
+   "preview": "https://cdn.freesound.org/previews/474/474395_9813614-hq.mp3"
+  },
+  {
+   "id": 528350,
+   "title": "TV Talk",
+   "user": "magnuswaker",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/magnuswaker/sounds/528350/",
+   "preview": "https://cdn.freesound.org/previews/528/528350_11537497-hq.mp3"
+  },
+  {
+   "id": 702205,
+   "title": "British Television Programme.wav",
+   "user": "a.transmission",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/a.transmission/sounds/702205/",
+   "preview": "https://cdn.freesound.org/previews/702/702205_9921512-hq.mp3"
+  },
+  {
+   "id": 350715,
+   "title": "Changing Vietnamese TV",
+   "user": "Veridiansunrise",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/Veridiansunrise/sounds/350715/",
+   "preview": "https://cdn.freesound.org/previews/350/350715_46808-hq.mp3"
+  },
+  {
+   "id": 416001,
+   "title": "nixeno - house ambiance with radio music.mp3",
+   "user": "nixeno",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/nixeno/sounds/416001/",
+   "preview": "https://cdn.freesound.org/previews/416/416001_8214298-hq.mp3"
+  },
+  {
+   "id": 739417,
+   "title": "room-tone chat next room radio chat 326 AM 150903_0760",
+   "user": "klankbeeld",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/klankbeeld/sounds/739417/",
+   "preview": "https://cdn.freesound.org/previews/739/739417_1648170-hq.mp3"
+  },
+  {
+   "id": 723720,
+   "title": "roomtone far radio chat 933 AM NL 240215_0653",
+   "user": "klankbeeld",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/klankbeeld/sounds/723720/",
+   "preview": "https://cdn.freesound.org/previews/723/723720_1648170-hq.mp3"
+  },
+  {
+   "id": 455908,
+   "title": "People talking in small room",
+   "user": "quadraslayer",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/quadraslayer/sounds/455908/",
+   "preview": "https://cdn.freesound.org/previews/455/455908_5411212-hq.mp3"
+  },
+  {
+   "id": 473586,
+   "title": "People talking (Adults & Children)",
+   "user": "Breviceps",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/Breviceps/sounds/473586/",
+   "preview": "https://cdn.freesound.org/previews/473/473586_9159316-hq.mp3"
+  },
+  {
+   "id": 607191,
+   "title": "Conversations.mp3",
+   "user": "DianeDuchn",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/DianeDuchn/sounds/607191/",
+   "preview": "https://cdn.freesound.org/previews/607/607191_13419236-hq.mp3"
+  },
+  {
+   "id": 703784,
+   "title": "conversation in a driving school",
+   "user": "aisselles",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/aisselles/sounds/703784/",
+   "preview": "https://cdn.freesound.org/previews/703/703784_3200333-hq.mp3"
+  },
+  {
+   "id": 324783,
+   "title": "conversation.wav",
+   "user": "miguel2613",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/miguel2613/sounds/324783/",
+   "preview": "https://cdn.freesound.org/previews/324/324783_5589643-hq.mp3"
+  },
+  {
+   "id": 780526,
+   "title": "Conversation about  pumpkin flowers in Mexico",
+   "user": "tkesslert",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/tkesslert/sounds/780526/",
+   "preview": "https://cdn.freesound.org/previews/780/780526_146197-hq.mp3"
+  },
+  {
+   "id": 621813,
+   "title": "Radio Music Loop 008",
+   "user": "nlux",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/nlux/sounds/621813/",
+   "preview": "https://cdn.freesound.org/previews/621/621813_9047165-hq.mp3"
+  },
+  {
+   "id": 710081,
+   "title": "Motorcycle shop garage interior with radio music, counter girl talking on the phone",
+   "user": "felix.blume",
+   "license": "Creative Commons 0",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/felix.blume/sounds/710081/",
+   "preview": "https://cdn.freesound.org/previews/710/710081_1661766-hq.mp3"
+  },
+  {
+   "id": 851865,
+   "title": "Kids Music 100bpm loop",
+   "user": "Tomentum+",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/Tomentum+/sounds/851865/",
+   "preview": "https://cdn.freesound.org/previews/851/851865_14510673-hq.mp3"
+  },
+  {
+   "id": 795421,
+   "title": "Kizomba African Dance Music",
+   "user": "Tomentum+",
+   "license": "Attribution",
+   "role": "neg_tv",
+   "url": "https://freesound.org/people/Tomentum+/sounds/795421/",
+   "preview": "https://cdn.freesound.org/previews/795/795421_14510673-hq.mp3"
+  },
+  {
+   "id": 459843,
+   "title": "Apartment kitchen ambience",
+   "user": "AlexLane",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/AlexLane/sounds/459843/",
+   "preview": "https://cdn.freesound.org/previews/459/459843_2617886-hq.mp3"
+  },
+  {
+   "id": 484373,
+   "title": "Cooking and Preparing Soup.wav",
+   "user": "SpaceJoe",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/SpaceJoe/sounds/484373/",
+   "preview": "https://cdn.freesound.org/previews/484/484373_6150892-hq.mp3"
+  },
+  {
+   "id": 467106,
+   "title": "Kitchen - Cooking 19-04-16.wav",
+   "user": "boostmeh",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/boostmeh/sounds/467106/",
+   "preview": "https://cdn.freesound.org/previews/467/467106_94736-hq.mp3"
+  },
+  {
+   "id": 587013,
+   "title": "Kitchen noises microwave.mp3",
+   "user": "Lewooz",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/Lewooz/sounds/587013/",
+   "preview": "https://cdn.freesound.org/previews/587/587013_4984902-hq.mp3"
+  },
+  {
+   "id": 569388,
+   "title": "doing the dishes.wav",
+   "user": "MarleneAyni",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/MarleneAyni/sounds/569388/",
+   "preview": "https://cdn.freesound.org/previews/569/569388_929621-hq.mp3"
+  },
+  {
+   "id": 214686,
+   "title": "wash_dishes.wav",
+   "user": "piedo",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/piedo/sounds/214686/",
+   "preview": "https://cdn.freesound.org/previews/214/214686_3845930-hq.mp3"
+  },
+  {
+   "id": 833845,
+   "title": "Vacuum Cleaner",
+   "user": "bangcorrupt",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/bangcorrupt/sounds/833845/",
+   "preview": "https://cdn.freesound.org/previews/833/833845_9524907-hq.mp3"
+  },
+  {
+   "id": 788687,
+   "title": "Vacuum cleaner Nilfisk",
+   "user": "LakorpSound",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/LakorpSound/sounds/788687/",
+   "preview": "https://cdn.freesound.org/previews/788/788687_15658762-hq.mp3"
+  },
+  {
+   "id": 845627,
+   "title": "Siemens Dishwasher – Full Machine Cycle Blend (MixedDown, 48 kHz) - 240220_009",
+   "user": "TSP-Talk",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/TSP-Talk/sounds/845627/",
+   "preview": "https://cdn.freesound.org/previews/845/845627_14079354-hq.mp3"
+  },
+  {
+   "id": 440717,
+   "title": "A clock and a fridge in a kitchen at night",
+   "user": "Diegolar",
+   "license": "Attribution",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/Diegolar/sounds/440717/",
+   "preview": "https://cdn.freesound.org/previews/440/440717_1910728-hq.mp3"
+  },
+  {
+   "id": 527677,
+   "title": "dishes and cats.wav",
+   "user": "bruno.auzet",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/bruno.auzet/sounds/527677/",
+   "preview": "https://cdn.freesound.org/previews/527/527677_11519060-hq.mp3"
+  },
+  {
+   "id": 85109,
+   "title": "JK Household Sequence.wav",
+   "user": "cmusounddesign",
+   "license": "Attribution",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/cmusounddesign/sounds/85109/",
+   "preview": "https://cdn.freesound.org/previews/85/85109_1059930-hq.mp3"
+  },
+  {
+   "id": 759116,
+   "title": "random sound recorded in my kitchen",
+   "user": "naotokui",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/naotokui/sounds/759116/",
+   "preview": "https://cdn.freesound.org/previews/759/759116_16419027-hq.mp3"
+  },
+  {
+   "id": 616820,
+   "title": "Cooking, lighting gas stove, sizzles, wok, frying (2012).wav",
+   "user": "TRP",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/TRP/sounds/616820/",
+   "preview": "https://cdn.freesound.org/previews/616/616820_97550-hq.mp3"
+  },
+  {
+   "id": 792776,
+   "title": "Robot vacuum cleaner",
+   "user": "copyc4t",
+   "license": "Attribution",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/copyc4t/sounds/792776/",
+   "preview": "https://cdn.freesound.org/previews/792/792776_1904290-hq.mp3"
+  },
+  {
+   "id": 856759,
+   "title": "Bialetti espresso machine sounds",
+   "user": "Nordliecht",
+   "license": "Creative Commons 0",
+   "role": "neg_household",
+   "url": "https://freesound.org/people/Nordliecht/sounds/856759/",
+   "preview": "https://cdn.freesound.org/previews/856/856759_17216918-hq.mp3"
+  },
+  {
+   "id": 824408,
+   "title": "Mobile phone ringtone",
+   "user": "melliug",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/melliug/sounds/824408/",
+   "preview": "https://cdn.freesound.org/previews/824/824408_1318434-hq.mp3"
+  },
+  {
+   "id": 455413,
+   "title": "Ring Tone.wav",
+   "user": "AnthonyRamirez",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/AnthonyRamirez/sounds/455413/",
+   "preview": "https://cdn.freesound.org/previews/455/455413_7193358-hq.mp3"
+  },
+  {
+   "id": 35408,
+   "title": "ringing.wav",
+   "user": "scarbelly25",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/scarbelly25/sounds/35408/",
+   "preview": "https://cdn.freesound.org/previews/35/35408_298165-hq.mp3"
+  },
+  {
+   "id": 614307,
+   "title": "Ringtone for Jade",
+   "user": "ChristmasKrumble666",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/ChristmasKrumble666/sounds/614307/",
+   "preview": "https://cdn.freesound.org/previews/614/614307_5820974-hq.mp3"
+  },
+  {
+   "id": 201605,
+   "title": "Phone Ringing Tone.wav",
+   "user": "rayprice",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/rayprice/sounds/201605/",
+   "preview": "https://cdn.freesound.org/previews/201/201605_2790242-hq.mp3"
+  },
+  {
+   "id": 389604,
+   "title": "tele_Ring.wav",
+   "user": "KeeKee",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/KeeKee/sounds/389604/",
+   "preview": "https://cdn.freesound.org/previews/389/389604_7182564-hq.mp3"
+  },
+  {
+   "id": 456433,
+   "title": "Old Rotary Phone Ringing - Western Electric Bell 500 phone",
+   "user": "mycompasstv",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/mycompasstv/sounds/456433/",
+   "preview": "https://cdn.freesound.org/previews/456/456433_3902754-hq.mp3"
+  },
+  {
+   "id": 275053,
+   "title": "old phone ringing",
+   "user": "cvp1965",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/cvp1965/sounds/275053/",
+   "preview": "https://cdn.freesound.org/previews/275/275053_1162406-hq.mp3"
+  },
+  {
+   "id": 654935,
+   "title": "cell phone ring",
+   "user": "jordanielmills",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/jordanielmills/sounds/654935/",
+   "preview": "https://cdn.freesound.org/previews/654/654935_1657645-hq.mp3"
+  },
+  {
+   "id": 144086,
+   "title": "Cell Phone Ringing EMP 2",
+   "user": "weyhingj",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/weyhingj/sounds/144086/",
+   "preview": "https://cdn.freesound.org/previews/144/144086_1933878-hq.mp3"
+  },
+  {
+   "id": 759640,
+   "title": "Alarm Ringtone",
+   "user": "Migfus20",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/Migfus20/sounds/759640/",
+   "preview": "https://cdn.freesound.org/previews/759/759640_12295155-hq.mp3"
+  },
+  {
+   "id": 728215,
+   "title": "Dlab (Free to Use Ringtone)",
+   "user": "lev.tover",
+   "license": "Creative Commons 0",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/lev.tover/sounds/728215/",
+   "preview": "https://cdn.freesound.org/previews/728/728215_15817536-hq.mp3"
+  },
+  {
+   "id": 718197,
+   "title": "Melodic Ringtone (Bells at Night)",
+   "user": "shieldziak",
+   "license": "Attribution",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/shieldziak/sounds/718197/",
+   "preview": "https://cdn.freesound.org/previews/718/718197_8447097-hq.mp3"
+  },
+  {
+   "id": 364108,
+   "title": "ringtone4-freesound.wav",
+   "user": "Thoribass",
+   "license": "Attribution",
+   "role": "neg_ringtone",
+   "url": "https://freesound.org/people/Thoribass/sounds/364108/",
+   "preview": "https://cdn.freesound.org/previews/364/364108_4597795-hq.mp3"
+  },
+  {
+   "id": 458302,
+   "title": "Westminster Chimes Full.mp3",
+   "user": "theblockofsound235",
+   "license": "Attribution",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/theblockofsound235/sounds/458302/",
+   "preview": "https://cdn.freesound.org/previews/458/458302_2377160-hq.mp3"
+  },
+  {
+   "id": 620591,
+   "title": "Quarter-hour Westminster chimes",
+   "user": "nightcustard",
+   "license": "Attribution",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/nightcustard/sounds/620591/",
+   "preview": "https://cdn.freesound.org/previews/620/620591_13737430-hq.mp3"
+  },
+  {
+   "id": 62579,
+   "title": "Grandfather Clock Chime.wav",
+   "user": "lonemonk",
+   "license": "Attribution",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/lonemonk/sounds/62579/",
+   "preview": "https://cdn.freesound.org/previews/62/62579_230160-hq.mp3"
+  },
+  {
+   "id": 763649,
+   "title": "I Feel Pretty Doorbell",
+   "user": "smllfrey84",
+   "license": "Creative Commons 0",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/smllfrey84/sounds/763649/",
+   "preview": "https://cdn.freesound.org/previews/763/763649_3699660-hq.mp3"
+  },
+  {
+   "id": 66986,
+   "title": "electronicchimes.wav",
+   "user": "guitarguy1985",
+   "license": "Creative Commons 0",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/guitarguy1985/sounds/66986/",
+   "preview": "https://cdn.freesound.org/previews/66/66986_533680-hq.mp3"
+  },
+  {
+   "id": 720037,
+   "title": "Dorrbell_Chimes_001_48Hz_24bit",
+   "user": "Helmer88",
+   "license": "Creative Commons 0",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/Helmer88/sounds/720037/",
+   "preview": "https://cdn.freesound.org/previews/720/720037_13121138-hq.mp3"
+  },
+  {
+   "id": 18761,
+   "title": "TwoToneDoorbell.wav",
+   "user": "acclivity",
+   "license": "Attribution NonCommercial",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/acclivity/sounds/18761/",
+   "preview": "https://cdn.freesound.org/previews/18/18761_37876-hq.mp3"
+  },
+  {
+   "id": 542806,
+   "title": "doorbell.wav",
+   "user": "ErickBloem_200250",
+   "license": "Attribution NonCommercial",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/ErickBloem_200250/sounds/542806/",
+   "preview": "https://cdn.freesound.org/previews/542/542806_12123986-hq.mp3"
+  },
+  {
+   "id": 425424,
+   "title": "DoorBell Various.wav",
+   "user": "AnthonyRamirez",
+   "license": "Creative Commons 0",
+   "role": "neg_otherbell",
+   "url": "https://freesound.org/people/AnthonyRamirez/sounds/425424/",
+   "preview": "https://cdn.freesound.org/previews/425/425424_7193358-hq.mp3"
+  },
+  {
+   "id": 465462,
+   "title": "key shaking, jingle",
+   "user": "ittou",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/ittou/sounds/465462/",
+   "preview": "https://cdn.freesound.org/previews/465/465462_4596196-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 831456,
+   "title": "Keys Clinking and Jingling",
+   "user": "Artistic_Dragonborn",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Artistic_Dragonborn/sounds/831456/",
+   "preview": "https://cdn.freesound.org/previews/831/831456_18047279-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 744380,
+   "title": "Keys Jingle and dropped on a covered table",
+   "user": "desktopepics",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/desktopepics/sounds/744380/",
+   "preview": "https://cdn.freesound.org/previews/744/744380_2273862-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 154651,
+   "title": "Keys_Jingle_02.aif",
+   "user": "crcavol",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/crcavol/sounds/154651/",
+   "preview": "https://cdn.freesound.org/previews/154/154651_2592500-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 616835,
+   "title": "Keys, various, jingle (2012).wav",
+   "user": "TRP",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/TRP/sounds/616835/",
+   "preview": "https://cdn.freesound.org/previews/616/616835_97550-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 676839,
+   "title": "Keys Jingle",
+   "user": "BanditXF",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/BanditXF/sounds/676839/",
+   "preview": "https://cdn.freesound.org/previews/676/676839_14682434-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 468034,
+   "title": "keys dropping on counter.wav",
+   "user": "buzzatsea",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/buzzatsea/sounds/468034/",
+   "preview": "https://cdn.freesound.org/previews/468/468034_3298379-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 433889,
+   "title": "Keys - keychain jingling and falling on soft surfaces.wav",
+   "user": "jodybruchon",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/jodybruchon/sounds/433889/",
+   "preview": "https://cdn.freesound.org/previews/433/433889_7872308-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 157916,
+   "title": "Keys jangling then dropped.wav",
+   "user": "lolamadeus",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/lolamadeus/sounds/157916/",
+   "preview": "https://cdn.freesound.org/previews/157/157916_544580-hq.mp3",
+   "name": "transient-keys",
+   "kind": "keys",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 466851,
+   "title": "Light Switch Turning On and Off.mp3",
+   "user": "AlyssaB2043",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/AlyssaB2043/sounds/466851/",
+   "preview": "https://cdn.freesound.org/previews/466/466851_9648444-hq.mp3",
+   "name": "transient-light-switch",
+   "kind": "light switch",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 144075,
+   "title": "Light Switch",
+   "user": "weyhingj",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/weyhingj/sounds/144075/",
+   "preview": "https://cdn.freesound.org/previews/144/144075_1933878-hq.mp3",
+   "name": "transient-light-switch",
+   "kind": "light switch",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 469233,
+   "title": "light switch.WAV",
+   "user": "taya_yelton",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/taya_yelton/sounds/469233/",
+   "preview": "https://cdn.freesound.org/previews/469/469233_9612987-hq.mp3",
+   "name": "transient-light-switch",
+   "kind": "light switch",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 688744,
+   "title": "Light switch",
+   "user": "Beussa",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Beussa/sounds/688744/",
+   "preview": "https://cdn.freesound.org/previews/688/688744_6525386-hq.mp3",
+   "name": "transient-light-switch",
+   "kind": "light switch",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 365504,
+   "title": "Light switches on & off.mp3",
+   "user": "Caitlin_100",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Caitlin_100/sounds/365504/",
+   "preview": "https://cdn.freesound.org/previews/365/365504_5407590-hq.mp3",
+   "name": "transient-light-switch",
+   "kind": "light switch",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 457402,
+   "title": "CLOSET CABINE DOOR OPEN CLOSE LOCK UNLOCK.wav",
+   "user": "EricsSoundschmiede",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/EricsSoundschmiede/sounds/457402/",
+   "preview": "https://cdn.freesound.org/previews/457/457402_1106446-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 583302,
+   "title": "FX SaSc Door 19 Lock Berlin Flat Apartment Bathroom Opem Close 2 Versions.wav",
+   "user": "Profispiesser",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Profispiesser/sounds/583302/",
+   "preview": "https://cdn.freesound.org/previews/583/583302_6667441-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 586840,
+   "title": "Door close Dave (1).wav",
+   "user": "Dave_Gibson",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Dave_Gibson/sounds/586840/",
+   "preview": "https://cdn.freesound.org/previews/586/586840_13105763-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 208723,
+   "title": "Wardrobe_Sliding_Door_open_close_Slow_metal_005.aif",
+   "user": "tompallant",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/tompallant/sounds/208723/",
+   "preview": "https://cdn.freesound.org/previews/208/208723_257367-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 395655,
+   "title": "Open/close door forcefully 2.MP3",
+   "user": "SoundsForHim",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/SoundsForHim/sounds/395655/",
+   "preview": "https://cdn.freesound.org/previews/395/395655_7386498-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 736558,
+   "title": "Closing Glass Door",
+   "user": "Kraftaggregat",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Kraftaggregat/sounds/736558/",
+   "preview": "https://cdn.freesound.org/previews/736/736558_9268998-hq.mp3",
+   "name": "transient-door-open-close",
+   "kind": "door open/close",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 177735,
+   "title": "Thailand switch air conditioner on off 3 different record levels nice tape recorder button push and snap click.flac",
+   "user": "kyles",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/kyles/sounds/177735/",
+   "preview": "https://cdn.freesound.org/previews/177/177735_612689-hq.mp3",
+   "name": "transient-push-button",
+   "kind": "push button",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 484149,
+   "title": "Coffee Maker Button",
+   "user": "acc71000",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/acc71000/sounds/484149/",
+   "preview": "https://cdn.freesound.org/previews/484/484149_5261092-hq.mp3",
+   "name": "transient-push-button",
+   "kind": "push button",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 670024,
+   "title": "Pressing the Button of a Mosquito Killer Racquet.wav",
+   "user": "josephvm",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/josephvm/sounds/670024/",
+   "preview": "https://cdn.freesound.org/previews/670/670024_6940680-hq.mp3",
+   "name": "transient-push-button",
+   "kind": "push button",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 642956,
+   "title": "Indoor footsteps foley.wav",
+   "user": "FIlippoPolverini",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/FIlippoPolverini/sounds/642956/",
+   "preview": "https://cdn.freesound.org/previews/642/642956_12904783-hq.mp3",
+   "name": "transient-footsteps",
+   "kind": "footsteps",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 804599,
+   "title": "footstepsLogellou2",
+   "user": "nicotep",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/nicotep/sounds/804599/",
+   "preview": "https://cdn.freesound.org/previews/804/804599_7529214-hq.mp3",
+   "name": "transient-footsteps",
+   "kind": "footsteps",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 459964,
+   "title": "Footsteps on concrete",
+   "user": "florianreichelt",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/florianreichelt/sounds/459964/",
+   "preview": "https://cdn.freesound.org/previews/459/459964_6253486-hq.mp3",
+   "name": "transient-footsteps",
+   "kind": "footsteps",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 613723,
+   "title": "Quiet footsteps indoors rubber shoes",
+   "user": "dynamique",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/dynamique/sounds/613723/",
+   "preview": "https://cdn.freesound.org/previews/613/613723_456862-hq.mp3",
+   "name": "transient-footsteps",
+   "kind": "footsteps",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 404800,
+   "title": "Footsteps_Wood_Indoor_ Harder",
+   "user": "Svyato",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Svyato/sounds/404800/",
+   "preview": "https://cdn.freesound.org/previews/404/404800_6107303-hq.mp3",
+   "name": "transient-footsteps",
+   "kind": "footsteps",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 383756,
+   "title": "Knocking Knock on Door 2",
+   "user": "deleted_user_7146007",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/deleted_user_7146007/sounds/383756/",
+   "preview": "https://cdn.freesound.org/previews/383/383756_7146007-hq.mp3",
+   "name": "transient-door-knock",
+   "kind": "door knock",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 256513,
+   "title": "Knock on the door",
+   "user": "HunteR4708",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/HunteR4708/sounds/256513/",
+   "preview": "https://cdn.freesound.org/previews/256/256513_4772965-hq.mp3",
+   "name": "transient-door-knock",
+   "kind": "door knock",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 571671,
+   "title": "Knock on Door 2",
+   "user": "NachtmahrTV",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/NachtmahrTV/sounds/571671/",
+   "preview": "https://cdn.freesound.org/previews/571/571671_5620304-hq.mp3",
+   "name": "transient-door-knock",
+   "kind": "door knock",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 671072,
+   "title": "Knock A, Open Door, Loud Class Sounds.wav",
+   "user": "NdurusSounds",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/NdurusSounds/sounds/671072/",
+   "preview": "https://cdn.freesound.org/previews/671/671072_11684434-hq.mp3",
+   "name": "transient-door-knock",
+   "kind": "door knock",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 260903,
+   "title": "Clapping hands",
+   "user": "FillSoko",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/FillSoko/sounds/260903/",
+   "preview": "https://cdn.freesound.org/previews/260/260903_3025911-hq.mp3",
+   "name": "transient-hand-clap",
+   "kind": "hand clap",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 367820,
+   "title": "Clapping hands.wav",
+   "user": "shutup_outcast",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/shutup_outcast/sounds/367820/",
+   "preview": "https://cdn.freesound.org/previews/367/367820_6104883-hq.mp3",
+   "name": "transient-hand-clap",
+   "kind": "hand clap",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 463500,
+   "title": "Hands clapping",
+   "user": "soundsofscienceupf",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/soundsofscienceupf/sounds/463500/",
+   "preview": "https://cdn.freesound.org/previews/463/463500_9597348-hq.mp3",
+   "name": "transient-hand-clap",
+   "kind": "hand clap",
+   "rings": [],
+   "note": ""
+  },
+  {
+   "id": 351776,
+   "title": "Hand Claps",
+   "user": "Hard3eat",
+   "license": "Creative Commons 0",
+   "role": "neg_transient",
+   "url": "https://freesound.org/people/Hard3eat/sounds/351776/",
+   "preview": "https://cdn.freesound.org/previews/351/351776_2278554-hq.mp3",
+   "name": "transient-hand-clap",
+   "kind": "hand clap",
+   "rings": [],
+   "note": ""
+  }
+ ],
+ "librispeech": {
+  "url": "https://www.openslr.org/resources/12/dev-clean.tar.gz",
+  "license": "CC BY 4.0",
+  "minutes": 15
+ },
+ "esc50": {
+  "url": "https://github.com/karolpiczak/ESC-50/archive/master.zip",
+  "license": "CC BY-NC 3.0 (per clip: Freesound licences, see ESC-50 README)"
+ },
+ "local": [
+  {
+   "name": "home-bell",
+   "file": "home-bell.wav",
+   "kind": "electronic 3-tone chime (F6, C#6, G#5), phrase played twice, 1.4 s; phone recording of a real front door",
+   "license": "private recording, not distributed",
+   "rings": [
+    2.26
+   ],
+   "ring_s": 1.85,
+   "note": "not downloadable: put the 16 kHz mono WAV into data/src/local/ (see README); skipped if missing"
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+item,description,manufacturer/MPN or custom (file path in repo),supplier,qty per device,note
+"DBN-MAIN PCB, assembled (order of 20 boards)","Populated DBN-MAIN rev A board: ESP32-S3-MINI-1, ICS-43434 mic, 12x WS2812B-V6 ring, USB-C, buttons; same board for sender and receiver",custom (electronics/dbn-main/; fab package electronics/dbn-main/fab/),JLCPCB (PCB + Standard PCBA),1,order of 20 boards (10 pairs)
+Case back (3D printed),"Case back, FDM print, PLA, 18.2 g filament",custom (mechanics/exports/doorbell-case_Case_back.stl; source mechanics/doorbell-case.FCStd),self-printed; filament Bambu Lab PLA Basic 1.75 mm 1 kg (Bambu Lab EU store),1,estimate: filament only (no printer time/energy/failed prints); CAD solid mass is an upper bound
+Case front (3D printed),"Case front, FDM print, PLA, 16.3 g filament",custom (mechanics/exports/doorbell-case_Case_front.stl; source mechanics/doorbell-case.FCStd),self-printed; filament Bambu Lab PLA Basic 1.75 mm 1 kg (Bambu Lab EU store),1,estimate: filament only (no printer time/energy/failed prints); CAD solid mass is an upper bound
+Diffuser (3D printed),"Diffuser, FDM print, natural/white PLA, 2.6 g filament",custom (mechanics/exports/doorbell-case_Diffuser.stl; source mechanics/doorbell-case.FCStd),self-printed; filament Bambu Lab PLA Basic 1.75 mm 1 kg (Bambu Lab EU store),1,estimate: filament only (no printer time/energy/failed prints); CAD solid mass is an upper bound; glued into Case front with 2-3 drops of glue
+Plunger (3D printed),"Plunger, FDM print, PLA, 3.7 g filament",custom (mechanics/exports/doorbell-case_Plunger.stl; source mechanics/doorbell-case.FCStd),self-printed; filament Bambu Lab PLA Basic 1.75 mm 1 kg (Bambu Lab EU store),1,estimate: filament only (no printer time/energy/failed prints); CAD solid mass is an upper bound
+Foot (3D printed),"Foot, FDM print, PLA, 102.4 g filament",custom (mechanics/exports/doorbell-case_Foot.stl; source mechanics/doorbell-case.FCStd),self-printed; filament Bambu Lab PLA Basic 1.75 mm 1 kg (Bambu Lab EU store),1,estimate: filament only (no printer time/energy/failed prints); CAD solid mass is an upper bound
+Mic gasket,"Foam or TPU gasket, 2 mm thick, OD 6 / ID 2.5 mm",custom (mechanics/exports/doorbell-case_Mic_gasket.stl),cut from sheet stock,1,estimate
+Screw M3x8 pan head,"M3x8 pan head, thread-forming for plastic (ISO 7045 / DIN 7985 head <= 6.0 x 2.4 mm)",XHHD PM3*8 Ni (LCSC C13410),LCSC,4,LCSC minimum order 100 pcs; any M3x8 thread-forming pan-head screw fits
+"TOTAL per device, order of 2 boards",1 assembled board + enclosure + screws,,,,partly estimate (see rows)
+"TOTAL per pair, order of 2 boards",sender + receiver (2 devices),,,,
+"TOTAL per device, order of 20 boards",1 assembled board + enclosure + screws,,,,partly estimate (see rows)
+"TOTAL per pair, order of 20 boards",sender + receiver (2 devices),,,,
+OPTIONAL: USB-C cable,"USB-A to USB-C cable 1 m, straight plug, cable OD 4.0 mm",EFB-Elektronik USB-AC-00002,reichelt,1,not in the totals above; plug overmold must be <= 12.35 x 6.5 mm to fit the case opening (check before buying)
+OPTIONAL: 5 V USB wall plug,"USB wall plug 5 V 2.1 A, USB-A output",LogiLink PA0217,reichelt,1,not in the totals above; >= 1.5 A recommended (LED cap 600 mA + ESP32-S3 TX peaks ~330 mA)
+"TOTAL per pair incl. optional cable + plug, order of 20 boards",2 devices + 2 cables + 2 wall plugs,,,,
+"TOTAL per pair incl. optional cable + plug, order of 2 boards",2 devices + 2 cables + 2 wall plugs,,,,

@@ -1,0 +1,69 @@
+ref/group,part,manufacturer,MPN,supplier,supplier part no.,qty per device,note
+"## A. DBN-MAIN rev A electronics, assembled by JLC (universal population: same board for sender and receiver)",,,,,,,
+"C1,C2",10uF MLCC,Samsung Electro-Mechanics,CL21A106KAYNNNE,JLCPCB (LCSC),C15850,2,JLC basic; JLC stock 8315545
+"C3,C5,C6,C7,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20",100nF MLCC,YAGEO,CC0603KRX7R9BB104,JLCPCB (LCSC),C14663,16,JLC basic; JLC stock 41416655
+C4,1uF MLCC,Samsung Electro-Mechanics,CL10A105KB8NNNC,JLCPCB (LCSC),C15849,1,JLC basic; JLC stock 12216287 (LCSC shop stock 0; JLC assembly stock fine)
+C8,22uF MLCC,Samsung Electro-Mechanics,CL21A226MAQNNNE,JLCPCB (LCSC),C45783,1,JLC basic; JLC stock 3743582
+"D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12",WS2812B-V6,Worldsemi,WS2812B-V6,JLCPCB (LCSC),C52917433,12,"JLC extended; JLC stock 123283; LCSC stock 122465 (2026-11-01). Replaces the discontinued WS2812B-B/T C2761795 (BOM/CPL only, no copper change): same 5.0x5.4x1.57 mm package drawing and pinout (1 VDD, 2 DOUT, 3 VSS, 4 DIN), same timing (T0H 220-380 ns, T1H 580 ns-1 us, reset > 280 us) and GRB order per the Worldsemi datasheets"
+F1,PTC 1.5A hold,Littelfuse,1206L150THWR,JLCPCB (LCSC),C118413,1,JLC extended; JLC stock 7664
+J1,USB-C 16P (HRO TYPE-C-31-M-12),Korean Hroparts Elec,TYPE-C-31-M-12,JLCPCB (LCSC),C165948,1,JLC extended; JLC stock 379057
+"R1,R2",5.1k resistor 0603,UNI-ROYAL(Uniroyal Elec),0603WAF5101T5E,JLCPCB (LCSC),C23186,2,JLC basic; JLC stock 21245025
+"R3,R4,R5,R7",10k resistor 0603,UNI-ROYAL(Uniroyal Elec),0603WAF1002T5E,JLCPCB (LCSC),C25804,4,JLC basic; JLC stock 48634479
+R6,33R resistor 0603,UNI-ROYAL(Uniroyal Elec),0603WAF330JT5E,JLCPCB (LCSC),C23140,1,JLC basic; JLC stock 4249205
+R8,"0R (ROLE, fit = sender) resistor 0603",UNI-ROYAL,0603WAF0000T5E,LCSC,C21189,0,DNP at JLC. Sender only: hand-fit 1 pc (ROLE strap); receiver: not fitted
+R9,100k resistor 0603,UNI-ROYAL(Uniroyal Elec),0603WAF1003T5E,JLCPCB (LCSC),C25803,1,JLC basic; JLC stock 17630021
+SW1,USER (6x6x5),Korean Hroparts Elec,K2-1102SP-C4SC-04,JLCPCB (LCSC),C127509,1,JLC extended; JLC stock 70530
+SW2,BOOT,XKB Connection,TS-1187A-B-A-B,JLCPCB (LCSC),C318884,1,JLC basic; JLC stock 1092338
+SW3,RESET,XKB Connection,TS-1187A-B-A-B,JLCPCB (LCSC),C318884,1,JLC basic; JLC stock 1092338
+U1,ESP32-S3-MINI-1-N8,Espressif Systems,ESP32-S3-MINI-1-N8,JLCPCB (LCSC),C2913206,1,JLC extended; JLC stock 12905
+U2,AP2112K-3.3TRG1,Diodes Incorporated,AP2112K-3.3TRG1,JLCPCB (LCSC),C51118,1,JLC extended; JLC stock 9037
+U3,SN74AHCT1G125DBVR,Texas Instruments,SN74AHCT1G125DBVR,JLCPCB (LCSC),C7484,1,JLC extended; JLC stock 43167
+U4,ICS-43434,TDK InvenSense,ICS-43434,JLCPCB (LCSC),C5656610,1,JLC extended; JLC stock 3355; forces Standard PCBA
+U5,USBLC6-2SC6,STMicroelectronics,USBLC6-2SC6,JLCPCB (LCSC),C7519,1,JLC extended; JLC stock 45512
+A-sum,Electronics parts subtotal per device (batch order quantities),,,,,1,"18 unique part types (9 extended), 225 solder joints per board"
+"## B1. JLC PCB + Standard PCBA, prototype: 2 boards assembled per order (per assembled board)",,,,,,,
+PCB-prototype,"Bare PCB, 5 pcs ordered, 2 assembled",JLCPCB,,JLCPCB,,1,"2 layers, 50x82 mm, 1.6 mm FR-4, 1 oz, HASL, green; JLC minimum is 5 PCBs, 3 spare bare boards"
+PCBA-prototype,Overhead: JLC order qty above need (attrition / minimum order per part),,,JLCPCB,,1,"estimate: JLC order qty assumed = need + attrition, at least the part minimum"
+PCBA-prototype,Setup fee (single side),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,Stencil (single side),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,"Feeder loading, 18 part types",,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,Fixture (1-29 pcs),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,Confirm parts placement (rotation check),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,Packing,,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-prototype,"SMT assembly, 225 joints",,,JLCPCB,,1,joint count from datasheet pin counts
+PCBA-prototype,"Pre-reflow (pin-in-paste) J1 shield legs, 4 joints",,,JLCPCB,,1,estimate: whether JLC applies this step to J1 is not confirmed
+PCBA-prototype,"X-ray inspection, 2 leadless parts per board (U1, U4)",,,JLCPCB,,1,estimate: JLC decides X-ray per part at review
+SHIP-prototype,"Shipping JLC -> DE, UPS Express Saver (DDP)",,,JLCPCB,,1,estimate: real weight with assembled boards may differ
+B-sum-prototype,PCB + assembly + overhead + shipping per board (prototype),,,,,1,
+"## B2. JLC PCB + Standard PCBA, batch: 20 boards assembled per order (per assembled board)",,,,,,,
+PCB-batch,"Bare PCB, 20 pcs ordered, 20 assembled",JLCPCB,,JLCPCB,,1,"2 layers, 50x82 mm, 1.6 mm FR-4, 1 oz, HASL, green"
+PCBA-batch,Overhead: JLC order qty above need (attrition / minimum order per part),,,JLCPCB,,1,"estimate: JLC order qty assumed = need + attrition, at least the part minimum"
+PCBA-batch,Setup fee (single side),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,Stencil (single side),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,"Feeder loading, 18 part types",,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,Fixture (1-29 pcs),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,Confirm parts placement (rotation check),,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,Packing,,,JLCPCB,,1,"per order, shared by all boards of the order"
+PCBA-batch,"SMT assembly, 225 joints",,,JLCPCB,,1,joint count from datasheet pin counts
+PCBA-batch,"Pre-reflow (pin-in-paste) J1 shield legs, 4 joints",,,JLCPCB,,1,estimate: whether JLC applies this step to J1 is not confirmed
+PCBA-batch,"X-ray inspection, 2 leadless parts per board (U1, U4)",,,JLCPCB,,1,estimate: JLC decides X-ray per part at review
+SHIP-batch,"Shipping JLC -> DE, UPS Express Saver (DDP)",,,JLCPCB,,1,estimate: real weight with assembled boards may differ
+B-sum-batch,PCB + assembly + overhead + shipping per board (batch),,,,,1,
+## C. Enclosure and hardware (same case for sender and receiver),,,,,,,
+PRINT-Case back,"Case back, FDM print, PLA",Bambu Lab,"PLA Basic 1.75 mm, 1 kg refill",Bambu Lab EU store,,0.0182,estimate: CAD solid mass = upper bound (a slicer at normal infill uses less); qty in kg; excludes printer time/energy
+PRINT-Case front,"Case front, FDM print, PLA",Bambu Lab,"PLA Basic 1.75 mm, 1 kg refill",Bambu Lab EU store,,0.0163,estimate: CAD solid mass = upper bound (a slicer at normal infill uses less); qty in kg; excludes printer time/energy
+PRINT-Diffuser,"Diffuser, FDM print, PLA",Bambu Lab,"PLA Basic 1.75 mm, 1 kg refill",Bambu Lab EU store,,0.0026,"estimate: CAD solid mass = upper bound (a slicer at normal infill uses less); qty in kg; excludes printer time/energy; natural/white PLA, glued into Case front with 2-3 drops of glue"
+PRINT-Plunger,"Plunger, FDM print, PLA",Bambu Lab,"PLA Basic 1.75 mm, 1 kg refill",Bambu Lab EU store,,0.0037,estimate: CAD solid mass = upper bound (a slicer at normal infill uses less); qty in kg; excludes printer time/energy
+PRINT-Foot,"Foot, FDM print, PLA",Bambu Lab,"PLA Basic 1.75 mm, 1 kg refill",Bambu Lab EU store,,0.1024,estimate: CAD solid mass = upper bound (a slicer at normal infill uses less); qty in kg; excludes printer time/energy
+GASKET,"Mic gasket, 2 mm foam or TPU, OD 6 / ID 2.5",,,,,1,estimate: cut from sheet stock
+SCREW,"Screw M3x8 pan head, self-tapping (head <= 6.0 x 2.4)",XHHD,PM3*8 Ni,LCSC,C13410,4,"LCSC minimum 100 pcs; verify it is a thread-forming screw for plastic, any DIN 7985 / ISO 7045 M3x8 thread-forming screw fits"
+C-sum,Enclosure + hardware per device,,,,,1,
+## D. Optional accessories (NOT in the totals),,,,,,,
+OPT-CABLE,"USB-A to USB-C cable 1 m, straight, cable OD 4.0 mm",EFB-Elektronik,USB-AC-00002,reichelt,EFB USB-AC-00002,1,plug overmold must be <= 12.35 x 6.5 mm for the case opening (not specified by the seller: check before buying)
+OPT-PSU,"USB wall plug 5 V 2.1 A, USB-A",LogiLink,PA0217,reichelt,LOGILINK PA0217,1,">= 1.5 A recommended: LED cap 600 mA + ESP32-S3 TX peaks ~330 mA (a 1 A plug, e.g. Goobay 44948, is marginal)"
+## E. Totals,,,,,,,
+TOTAL-proto,"Per device, prototype (1 pair = 2 boards)",,,,,1,
+PAIR-proto,"Per pair (sender + receiver), prototype (1 pair = 2 boards)",,,,,1,
+TOTAL-batch,"Per device, batch (10 pairs = 20 boards)",,,,,1,
+PAIR-batch,"Per pair (sender + receiver), batch (10 pairs = 20 boards)",,,,,1,
+INFO-variable,"Per pair, variable share only (parts, PCB, SMT, X-ray, print, screws; no fixed fees/shipping)",,,,,1,

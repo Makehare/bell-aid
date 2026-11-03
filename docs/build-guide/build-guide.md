@@ -251,12 +251,14 @@ Receivers only react to the sender they are paired with.
 Train with the sender **standing where it will live**, in the normal quiet state of the room.
 
 1. Hold the sender's button for 1.5 to 5 s (release when D1 is yellow). D1 pulses blue: waiting for the bell.
-2. Ring your doorbell and let it play to the end. D1 turns cyan while it records and stays cyan until the sound has been quiet for 2 s, then flashes green. If the bell push is close to the sender, D1 may already turn cyan on its click: that is fine, short clicks, knocks and door noises before or after the chime are left out of the learned sound.
+2. Ring your doorbell and let it play to the end. D1 turns cyan while it records and stays cyan until the sound has been quiet for 2 s, then flashes green. If the bell push is close to the sender, D1 may already turn cyan on its click. For chimes and melodies that is fine: short clicks, knocks and door noises before or after the chime are left out of the learned sound. A very short bell (a single "ding" of about 0.8 s or less) can still learn the click with it; see "Short bell" below.
 3. Wait about 3 s, then ring again, 3 rings in total (more rings make detection more robust). Keep the room quiet meanwhile.
 4. Training ends after the 3rd ring, 8 s after the last ring, or with a short press. **Green x3 = saved**, red x3 = failed or aborted (no ring heard within 25 s, or a short press before the first ring); then start again.
-5. **Check it:** wait a few seconds and ring once more. D1 must flash white. If it does not, train again (and see "Fine-tuning").
+5. **Check it:** wait a few seconds and ring once more. D1 must flash white and the receivers (if not muted) must light up. If they do not, train again (and see "Fine-tuning").
 
 The learned sound and threshold are saved on the device.
+
+**Short bell and the push close to the sender:** if the check in step 5 keeps failing, keep the click of the push away from the sender during training. Have someone else press the push with the door closed while you stay at the sender, or record the bell with a phone next to the chime unit (where the push is not heard) and play it about 1 m from the sender. Then repeat the check in step 5 with the real bell.
 
 **Fine-tuning (optional, console):** `monitor 1` prints the live match score about 4 times per second. Ring the bell and note the peak score, then talk and make kitchen noise next to the sender and note those scores. `thr 72` (percent) makes the sender more sensitive, `thr 78` less sensitive; the default is 74. Below 72, speech and TV can start to trigger it. `cleartemplate` forgets the learned sound. `help` lists all commands.
 
@@ -304,7 +306,7 @@ Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 | Receiver blinks orange | Not paired: pair it (section 6.4). |
 | Sender blinks orange | No doorbell sound trained: train it (section 6.5). |
 | Receiver does not flash on TEST | Paired with this sender? After `newkey` on the sender all receivers must be paired again. If you enabled Long Range mode (`lr 1`), it must be on for all units. |
-| Bell not detected | Update to the current firmware and retrain where the sender stands (older firmware could learn the click of the bell push together with the chime). Use `monitor 1` and lower the threshold (`thr`) a little below the peak score, not below 72. Keep the mic hole (back of the case, lower left seen from behind) free. |
+| Bell not detected | Update to the current firmware and retrain where the sender stands (older firmware could learn the click of the bell push together with the chime). With a very short bell, train without the click (section 6.5, "Short bell"). Use `monitor 1` and lower the threshold (`thr`) a little below the peak score, not below 72. Keep the mic hole (back of the case, lower left seen from behind) free. |
 | False alarms | Raise the threshold (`thr`), retrain with 3 rings. |
 | Button does not click | The Plunger must slide freely in the Diffuser (section 4); no glue on the plunger. |
 | Screw turns but does not tighten | Stripped thread in the Case front post. Do not use a longer screw (M3x10 or longer pushes through the front face). Reprint the Case front and tighten only until snug. |
@@ -322,7 +324,7 @@ Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 - **Route the cable down and to the rear.** An upward pull on the cable (about 0.7 N) tips the stand forward.
 - **The plug must go in before the case goes into the Foot**, and the case must come out of the Foot before you unplug it or open the case.
 - **Printed fits depend on your printer:** the plunger guide, the screw pilot holes (Ø2.7, about 5 mm of thread engagement), the 0.2 mm clearance of the Foot pocket and the Ø2.0 mic hole may need the small fixes listed in sections 4 and 7.2.
-- **Doorbell detection was tested on recordings, not yet with the sender's own microphone.** The test set has 15 doorbells (public recordings, generated melodies and one real front door), played directly and through a phone speaker, with and without a bell-push click before the chime, plus speech, TV, household and click/knock sounds. A bell with a single pure tone, or household sounds similar to your bell, may need a higher threshold. Train and tune on your own bell (section 6.5). The microphone port sits about 1.5 mm above the top of the Foot; if detection is weak, check it during training.
+- **Doorbell detection was tested on recordings, not yet with the sender's own microphone.** The test set has 15 doorbells (public recordings, generated melodies and one real front door), played directly and through a phone speaker, with and without a bell-push click before the chime, plus speech, TV, household and click/knock sounds. A bell with a single pure tone, or household sounds similar to your bell, may need a higher threshold. A very short bell (about 0.8 s or less) can learn the click of a nearby bell push with it and then be missed; train it without the click (section 6.5). Train and tune on your own bell (section 6.5). The microphone port sits about 1.5 mm above the top of the Foot; if detection is weak, check it during training.
 - **Radio:** ESP-NOW broadcast on channel 1. Range depends on your walls; test every receiver location. The pairing key protects against crosstalk with a neighbour's unit; it is not encryption. Long Range mode (`lr 1`) is optional and was not range-tested.
 - **Mute is not saved:** it is cleared on every restart.
 - **No over-the-air updates:** update the firmware over USB (section 6.2).

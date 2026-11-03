@@ -143,7 +143,10 @@ Nothing is special-cased for this bell; the thresholds were chosen on the whole 
 the push and the sender are. In the phone recording two weak sounds precede the chime (1.4 s and
 1.8 s, ~1.2 kHz, ~12 dB above the room), probably press and release; even raised by 24-30 dB and
 with 0-0.8 s jitter they keep the score at 0.84-0.94, so a sharper, louder click at the sender
-(not audible in the phone recording) is the likely trigger. A `record` capture from the sender
+(not audible in the phone recording) is the likely trigger. A louder low sound (~310 Hz, 25-34 dB
+above the room) follows about 1.3 s after the chime (4.96-5.76 s in the recording). It is not
+learned: trained on the whole recording, this sound included, both detectors give 1.50 s
+templates and 72/72 (QA check), so it is not the cause either. A `record` capture from the sender
 confirms it (README, "Recording what the sender hears"): press the push and let the chime play,
 wait 5 s, press again, wait 5 s, knock on the door; then `wavtool train capture.wav -- test
 capture.wav` shows the ring lengths (`rings_s=`, 1.5 s expected for this chime) and the scores.
@@ -191,6 +194,18 @@ long-melody rings (4-75 % per bell and condition).
   threshold matters. `monitor 1` shows the live score for tuning.
 - Training feedback (green x3) does not show whether the learned sound matches: ring once more
   after training (README, step 5).
+- Short bells keep the click. The burst cut is skipped when less than 0.64 s of sound would
+  remain, so a bell with <= ~0.8 s of sound learns a nearby push click or knock with it. On the
+  independent QA set (3 short bells, 0.4-0.8 s, real recorded clicks or knocks before every ring)
+  47 % (clicks) and 32 % (knocks) were detected (previous: 26 % / 25 %), and 4-5 of 12 trainings
+  gave a template that never fires; training again repeats it. Bells >= 3 s on the same set
+  (without the mechanical twist bell): 96.2 % / 95.1 %. Workaround (README, "Training the doorbell"): train without the click.
+- One ring can fire more than once. After a firing the detector is locked for the rest of the
+  template + 1 s, so a ring longer than that (the 11.2 s westminster-b with its 8 s template, a
+  held buzzer) or a mechanical bell with uneven strikes can fire again. In the QA check of the
+  detector before the click fix, 119 of 660 rings fired 2 or more times (westminster-b 39/48,
+  buzzer-held 24/36, mech-bell 21/48); `run_eval.py` does not count these as false triggers. The
+  detection path is unchanged since. On the receiver a second RING restarts the 15 s flash.
 - Hard negatives: a single-strike bell template also fires on other bells and chimes (all 39
   hard-negative triggers). A unit trained on a simple "ding" may react to a TV doorbell or a
   neighbour's chime.

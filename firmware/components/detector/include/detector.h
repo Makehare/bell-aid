@@ -3,7 +3,7 @@
 // Audio: 16 kHz mono int16, fed in hops of DET_FRAME (512) samples = 32 ms; analysis window
 // 1024 samples (64 ms, Hann), so tones a semitone apart are resolved above ~300 Hz.
 //
-// Feature per hop: DET_BANDS semitone bands (300 Hz .. ~6.9 kHz). Each band holds the strongest
+// Feature per hop: DET_BANDS semitone bands (300 Hz .. ~6.6 kHz). Each band holds the strongest
 // FFT bin in that band, in dB ABOVE that band's own adaptive background floor (0 = background).
 // Tonal sounds (bell partials) give a few sharp, stable peaks; speech and noise give broad or
 // moving patterns. Level above the background is kept, so pauses and decays are information.
@@ -98,7 +98,7 @@ void  det_set_threshold(det_t *d, float thr);
 /* Feed exactly DET_FRAME samples. Returns DET_MATCH on detection, DET_TRAIN_* during training. */
 det_event_t det_process(det_t *d, const int16_t *pcm);
 /* Training: call begin, feed audio; each ring gives DET_TRAIN_ROUND_DONE once it has ended.
- * Call det_train_finish() (after >= 1 ring) to build the template and the auto threshold. */
+ * Call det_train_finish() (after >= 1 ring) to build the template (threshold = default). */
 void  det_train_begin(det_t *d);
 void  det_train_abort(det_t *d);
 int   det_train_rounds(const det_t *d);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Crossed-out wheeled bin with bar (WEEE marking, EN 50419 / ElektroG Annex 3).
+     Drawn by Makehare for the Bell Aid manual; own work, no third-party asset. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" width="100" height="140">
+  <title>Crossed-out wheeled bin</title>
+  <g fill="none" stroke="#000" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- lid + handle -->
+    <path d="M22 26 H78"/>
+    <path d="M42 26 V19 H58 V26"/>
+    <!-- body -->
+    <path d="M27 32 L33 96 H67 L73 32 Z"/>
+    <!-- body ribs -->
+    <path d="M42 42 L43 86 M50 42 V86 M58 42 L57 86"/>
+    <!-- cross -->
+    <path d="M12 14 L88 112 M88 14 L12 112"/>
+  </g>
+  <!-- wheels -->
+  <circle cx="35" cy="103" r="6" fill="#000"/>
+  <circle cx="65" cy="103" r="6" fill="#000"/>
+  <!-- bar: placed on the market after 13 Aug 2005 -->
+  <rect x="12" y="122" width="76" height="13" fill="#000"/>
+</svg>

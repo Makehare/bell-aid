@@ -42,6 +42,13 @@ float dbn_led_current_ma(const uint8_t *grb_or_rgb, int npix);
 /* Scales the buffer in place so the estimated current is <= cap_ma. Returns scale applied (<=1). */
 float dbn_led_limit(uint8_t *buf, int npix, float cap_ma);
 
+/* ---- full-ring doorbell alert (receiver and sender draw the same thing) ----
+ * 800 ms cycle: 0-300 ms all white, 300-400 ms off, 400-800 ms six amber pixels chasing clockwise.
+ * rgb[3] = colour of pixel i (0..npix-1) at t_ms since the alert started. */
+#define DBN_ALERT_RING_MS 15000    /* real doorbell ring */
+#define DBN_ALERT_TEST_MS  3000    /* test ring / local test */
+void dbn_alert_pixel(uint32_t t_ms, int i, int npix, uint8_t rgb[3]);
+
 /* ---- mic capture over the console (sender `record`, decoded by tools/record.py) ----
  * One line per hop: "PCM <seq> <crc32 hex8> <base64 of the raw int16 LE samples>\n". */
 uint32_t dbn_crc32(const void *data, size_t n);            /* same value as zlib.crc32 */

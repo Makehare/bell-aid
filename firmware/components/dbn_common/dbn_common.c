@@ -83,3 +83,14 @@ size_t dbn_rec_line(uint32_t seq, const void *pcm, size_t n, char *out)
     out[o++] = '\n';
     return o;
 }
+
+void dbn_alert_pixel(uint32_t t_ms, int i, int npix, uint8_t rgb[3])
+{
+    uint32_t ph = t_ms % 800;
+    rgb[0] = rgb[1] = rgb[2] = 0;
+    if (ph < 300) { rgb[0] = rgb[1] = rgb[2] = 255; return; }
+    if (ph < 400) return;
+    int head = (int)((ph - 400) * (uint32_t)npix / 400);
+    int d = ((i - head) % npix + npix) % npix;
+    if (d < 6) { rgb[0] = 255; rgb[1] = 140; rgb[2] = 0; }
+}

@@ -1,4 +1,4 @@
-# Doorbell notifier: build guide (v1.0)
+# Doorbell notifier: build guide (v1.2)
 
 A small light that flashes when your doorbell rings. One unit (the **sender**) sits near the doorbell and listens for its sound; one or more units (the **receivers**) sit elsewhere in the home and flash their LED ring when the sender hears the bell. The radio link is ESP-NOW, so no Wi-Fi network or app is needed.
 
@@ -24,7 +24,7 @@ This guide is for makers who rebuild the device from the open-source repository.
 ## 1. What you get
 
 - **Sender and receiver are the same hardware.** Every unit has the same PCB, case and Foot. The role is set in firmware and saved on the device (NVS), see section 6.3.
-- **Sender:** a MEMS microphone listens for your doorbell. The sound is learned on the device (training, section 6.5); no cloud and no recording leaves the device. When it hears the bell, it broadcasts a ring message. Only the status LED (D1) is used.
+- **Sender:** a MEMS microphone listens for your doorbell. The sound is learned on the device (training, section 6.5); no cloud and no recording leaves the device. When it hears the bell, it broadcasts a ring message. On detection it plays the same full-ring alert as the receivers (all 12 LEDs, 15 s); when idle only the status LED (D1) blips.
 - **Receiver:** flashes its 12-LED ring for 15 s when the paired sender reports a ring. The centre button mutes it.
 - **A set** is 1 sender plus 1 or more receivers (the firmware is documented for up to 5 receivers per sender).
 - **Power:** 5 V over USB-C from a USB wall plug. No battery.
@@ -77,7 +77,6 @@ Per device you need:
 ### 2.2 Tools
 
 - FDM 3D printer, 0.4 mm nozzle. Largest part: Foot 70 x 51 x 49 mm; tallest part: Case back / Case front, 91.5 mm long (printed lying flat).
-- Drill (a drill press is easiest) with a **3.2 mm** bit, and a deburring tool or a larger drill bit to deburr by hand.
 - Screwdriver that fits your M3 pan-head screws (PH1 for most cross-recessed M3 heads).
 - Craft knife or hole punches (6 mm and 2.5 mm) for the gasket, if you cut it from foam sheet.
 - Optional: 2.0 mm drill bit (to clean the printed mic hole), 2.8 mm drill bit (only if the screws are very hard to drive), fine sandpaper.
@@ -98,15 +97,7 @@ Per device you need:
 - In the fab's placement preview, check the rotation of every part before you confirm, in particular the LEDs D1-D12 and the USB-C connector J1.
 - The same board is used for sender and receiver ("universal population"). R8 (role strap) is not fitted by default; you do not need it (section 6.3).
 
-### 3.2 Drill the mounting holes to 3.2 mm (once per board)
-
-Rev A boards have Ø2.2 mm mounting holes. The case uses M3 screws, so drill the **4 corner holes H1-H4 to Ø3.2 mm** before assembly.
-
-1. Hold the board flat on a piece of scrap wood, component side up.
-2. Drill each of the 4 mounting holes (H1-H4 on the silkscreen, 4 mm in from the left and right board edges) straight through with a 3.2 mm bit. Go slowly and do not press hard.
-3. Deburr both sides lightly and blow away the dust.
-
-This is safe: the holes are non-plated, and the nearest copper (ground pour, under solder mask) is 0.88 mm from the edge of a 3.2 mm hole. Do not drill any other hole.
+The 4 mounting holes (H1-H4) are Ø3.2 mm (M3) in the fab data; no drilling is needed.
 
 ---
 
@@ -157,7 +148,7 @@ Do the steps in this order. Each step group has an exploded view.
 
 *Rendering of the CAD model.*
 
-1. Make sure the 4 board holes are drilled to 3.2 mm (section 3.2).
+1. Check that the 4 board holes are Ø3.2 mm (M3); with the fab package from this repository they are.
 2. Put the **Mic gasket** into its round seat on the inside of the Case back, around the mic hole (lower right when you look into the case from the front).
 3. Lay the **PCB into the Case back with the components facing forward** (towards you), USB-C connector at the bottom, at the opening in the base. The board sits in a pocket with a little play on all sides.
 
@@ -254,7 +245,7 @@ Train with the sender **standing where it will live**, in the normal quiet state
 2. Ring your doorbell and let it play to the end. D1 turns cyan while it records and stays cyan until the sound has been quiet for 2 s, then flashes green. If the bell push is close to the sender, D1 may already turn cyan on its click. For chimes and melodies that is fine: short clicks, knocks and door noises before or after the chime are left out of the learned sound. A very short bell (a single "ding" of about 0.8 s or less) can still learn the click with it; see "Short bell" below.
 3. Wait about 3 s, then ring again, 3 rings in total (more rings make detection more robust). Keep the room quiet meanwhile.
 4. Training ends after the 3rd ring, 8 s after the last ring, or with a short press. **Green x3 = saved**, red x3 = failed or aborted (no ring heard within 25 s, or a short press before the first ring); then start again.
-5. **Check it:** wait a few seconds and ring once more. D1 must flash white and the receivers (if not muted) must light up. If they do not, train again (and see "Fine-tuning").
+5. **Check it:** wait a few seconds and ring once more. the sender's whole ring and the receivers (if not muted) must light up. If they do not, train again (and see "Fine-tuning").
 
 The learned sound and threshold are saved on the device.
 
@@ -274,7 +265,7 @@ The learned sound and threshold are saved on the device.
 |---|---|---|
 | Green blip every 3 s | Armed | OK (paired) |
 | Orange blip/blink | No doorbell sound trained yet | Not paired |
-| White flash | Ring detected or TEST sent | (whole ring flashes) |
+| Full-ring alert (white, amber chase) | Ring detected (15 s) or TEST sent (3 s); short press stops it | Same (whole ring) |
 | Steady dim red | | Muted (until the next restart) |
 | Yellow / magenta while held | Long / very long press reached | Same |
 | Pairing | Magenta blink (30 s) | Fast blue blink (60 s) |
@@ -291,8 +282,8 @@ Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 
 1. **Power:** each unit shows a D1 status colour within a few seconds of plugging in (section 6.6). A paired, trained unit shows only a short green blip every 3 s.
 2. **Receiver LEDs:** long press (1.5-5 s) on a receiver: all 12 LEDs flash for 3 s.
-3. **Link:** short press on the sender: it sends a TEST ring and D1 flashes white; every paired receiver flashes for 3 s. TEST also shows on a muted receiver, so you can check the link at any time.
-4. **Detection:** ring the real doorbell: the sender's D1 flashes white and the receivers (if not muted) flash white with an amber chase for 15 s. A short press on a receiver stops the flash.
+3. **Link:** short press on the sender: it sends a TEST ring and plays the 3 s alert on its own ring too; every paired receiver flashes for 3 s. TEST also shows on a muted receiver, so you can check the link at any time.
+4. **Detection:** ring the real doorbell: the sender and the receivers (if not muted) all play the full-ring alert, white with an amber chase, for 15 s. A short press on a unit stops the alert on that unit.
 5. **Range:** carry a receiver to each room where you want it and repeat step 3. Receivers repeat each ring once to cover dead spots (`rebroadcast 1`, on by default).
 6. **Stand:** the case sits firmly in the Foot, the cable is hooked in the J slot, and the stand stands flat.
 
@@ -328,8 +319,8 @@ Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 - **Radio:** ESP-NOW broadcast on channel 1. Range depends on your walls; test every receiver location. The pairing key protects against crosstalk with a neighbour's unit; it is not encryption. Long Range mode (`lr 1`) is optional and was not range-tested.
 - **Mute is not saved:** it is cleared on every restart.
 - **No over-the-air updates:** update the firmware over USB (section 6.2).
-- **Rev A PCB:** the mounting holes must be drilled to 3.2 mm by hand (section 3.2). The BOOT and RESET buttons are only reachable with the case open.
+- **BOOT and RESET** are only reachable with the case open.
 
 ---
 
-*Doorbell notifier v1.0, open-source hardware. All images in this guide are renderings of the CAD model, not photographs of a physical product.*
+*Doorbell notifier v1.2, open-source hardware. All images in this guide are renderings of the CAD model, not photographs of a physical product.*

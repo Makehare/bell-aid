@@ -18,6 +18,7 @@ esp_err_t cfg_blob_set_checked(const char *key, const void *buf, size_t len);
 bool      cfg_has(const char *key);
 void      cfg_erase(const char *key);
 /* Keys: role(0 auto,1 sender,2 receiver) thr(percent, user override) copies(3..5) rebc(0/1) lr(0/1)
+ *       salert(0/1, sender shows the full-ring alert itself, default 1)
  *       key(8B network key) peer(6B paired sender MAC, receiver) tmpl2(detector template v2 blob)
  *       Obsolete (v1 detector, erased on boot): tmpl, tlen. */
 
@@ -26,6 +27,7 @@ void  leds_init(void);
 void  leds_clear(void);
 void  leds_set(int i, uint8_t r, uint8_t g, uint8_t b);
 void  leds_fill(uint8_t r, uint8_t g, uint8_t b);
+void  leds_alert(uint32_t t_ms);    /* full-ring alert frame, t_ms since start (same on sender and receiver) */
 void  leds_show(void);              /* applies the <= LED_CAP_MA current cap */
 float leds_last_scale(void);
 
@@ -57,6 +59,7 @@ void sender_cmd_ring(void);
 void sender_cmd_monitor(int on);
 void sender_cmd_cleartemplate(void);
 void sender_cmd_threshold(int pct);
+void sender_cmd_alert(int on);
 void sender_cmd_record(int seconds);  /* streams mic PCM on the console, blocks until done */
 void sender_status_print(void);
 void receiver_status_print(void);

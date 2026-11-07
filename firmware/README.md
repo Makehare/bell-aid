@@ -2,7 +2,7 @@
 
 One ESP-IDF 5.4 image for the ESP32-S3-MINI-1-N8 on the shared DBN-MAIN board. The role is chosen at boot.
 
-- **Sender**: I2S MEMS mic (16 kHz) -> on-device trainable detector -> ESP-NOW broadcast `RING`.
+- **Sender**: I2S MEMS mic (16 kHz) -> on-device trainable detector -> ESP-NOW broadcast `RING`; shows the same full-ring alert itself (v1.2, `alert 0` turns it off).
 - **Receiver**: ESP-NOW rx -> 12-px WS2812 ring flash, mute button, optional one-hop re-broadcast.
 
 Pin map (ARCHITECTURE.md sec. 4.4, `main/board.h`): MIC SCK/WS/SD = GPIO4/5/6, LED_DIN = GPIO7, BTN_USER = GPIO9 (active low), ROLE = GPIO10, console/flash = native USB (GPIO19/20).
@@ -39,7 +39,7 @@ Provisioning (prototype run, R8 DNP):
 3. The override is stored in NVS and survives reboots and app-only updates (flashing the merged image or a full flash erase clears it). `role auto` removes the override; the GPIO10 strap then decides again.
 4. Test pads on the back (TP1 U0TXD, TP2 U0RXD, TP8 EN, TP9 GPIO0) are available for serial recovery if USB fails.
 
-Sender uses only pixel 0 (D1) as status LED. Receiver uses all 12 pixels.
+Both roles use all 12 pixels (universal population). When idle, the sender uses only pixel 0 (D1) for status blips; on a detection (and on its test button) it plays the full-ring alert like the receivers (v1.2).
 
 ## Button
 
@@ -57,7 +57,7 @@ D1 turns yellow while the long threshold is reached and magenta at the very-long
 2. Ring the real doorbell (or play it from a phone/laptop) and let it play to the end. D1 is cyan for the whole ring, then flashes green. If the bell push is near the sender, D1 may already turn cyan on its click; that is expected (see below).
 3. Wait at least 3 s, ring it again. Up to 3 rings in total (3 is best).
 4. Training ends after the 3rd ring, or 8 s after the last ring, or on a short press. Green x3 = saved, red x3 = failed or aborted (no ring heard within 25 s).
-5. Check: wait a few seconds, then ring once more. D1 must flash white and every paired receiver must light up (unless muted). If they do not, train again and look at the score with `monitor 1` (below). Green x3 only means that 3 rings were recorded, not that the learned sound matches.
+5. Check: wait a few seconds, then ring once more. The sender plays the full-ring alert (white/amber chase on all 12 pixels, 15 s; with `alert 0` D1 only flashes white for 0.6 s) and every paired receiver must light up (unless muted). If they do not, train again and look at the score with `monitor 1` (below). Green x3 only means that 3 rings were recorded, not that the learned sound matches.
 
 A ring lasts from its onset until the sound has been quiet for 2 s, so a melody with pauses between its notes (Westminster, several seconds) is learned as one ring. Up to 8 s per ring are kept; longer melodies are recognised by their first 8 s. Keep the room quiet during training: talking or other sounds in the 2 s after the last note make the ring longer than it is. Short bursts at the start or end of a ring (the click of the bell push, a knock, a door) are cut off, so for chimes and melodies they are not part of the learned sound. This does not work for very short bells: nothing is cut when less than 0.64 s of sound would remain, so a single short "ding" (about 0.8 s or less) can still learn the click with it. In tests with a click or knock before every ring, such bells were detected only 32-47 % of the time, and training again repeats the problem. With a short bell, keep the click away from the sender during training: have someone press the push with the door closed while you stay at the sender, or record the bell with a phone next to the chime unit (where the push is not heard) and play it about 1 m from the sender. Step 5 shows whether it worked.
 
@@ -80,7 +80,7 @@ Close any other serial monitor first. Ring the bell 3 times during the recording
 
 The `TRAIN` line shows how the rings were cut (`rings_s=`), each `FILE` line the number of matches and the peak score.
 
-Sender LED: green blip every 3 s = armed, orange blip = no template yet, white = detection / test sent.
+Sender LED: green blip every 3 s = armed, orange blip = no template yet. On a detection the sender plays the full-ring alert (see below).
 
 ## Pairing
 
@@ -97,6 +97,7 @@ Receivers only act on packets from the sender they are paired to, identified by 
 - Channel 1, ESP-NOW broadcast. Packet (23 bytes, `dbn_common.h`): magic, version, type (RING/TEST/PAIR_BEACON), event seq, copy index, hop, sender MAC, key, CRC-8.
 - Sender sends each RING 3-5 times (`copies`, default 4) with 30-55 ms jittered spacing and one seq per event.
 - Receiver dedupes by seq, flashes on the first copy, and (default on, `rebroadcast 0` to disable) re-broadcasts it once with `hop=1` after 15-60 ms to cover dead spots. Re-broadcast copies are never re-broadcast again.
+- Sender alert (v1.2, `alert 1`, default on; `alert 0` = old behaviour, D1 flashes white for 0.6 s only): on a detection the sender plays the exact same full-ring alert as a receiver (`dbn_alert_pixel`, one shared function): 800 ms cycle of all 12 pixels white 300 ms, off 100 ms, six amber pixels chasing clockwise 400 ms, for 15 s. A short press of the sender button during the alert stops it on this unit. The test button (short press when idle) sends a TEST ring and plays the 3 s alert on the sender too. The alert only runs in the idle (armed) state, never during training or pairing. The setting is stored in NVS (`salert`) and survives reboots; the radio is not delayed by the alert. Idle status blips (pixel 0) are unchanged.
 - Receiver flash: 15 s of white flash + amber chase, then stops. A muted receiver ignores RING but still shows TEST (so the link can be checked). Mute is RAM only (cleared on reboot).
 - LED current: estimated at 20 mA per colour channel at 255 (WS2812B); the whole frame is scaled down to <= 600 mA (full white 12 px = 720 mA -> 83 %). Verify the real per-pixel current on the bench (`LED_CAP_MA`, `DBN_LED_MA_PER_CH_FULL`).
 - Status pixel D1 on receiver: green heartbeat = ok, steady dim red = muted, orange blink = unpaired, blue blink = pairing.
@@ -107,7 +108,7 @@ Supported: ESP-IDF 5.4 documents LR for all ESP32-series chips except C2, and th
 
 ## Console commands
 
-`status`, `role auto|sender|receiver`, `thr 30..99`, `copies 3..5`, `record 1..120`, `ring`, `monitor 0|1`, `cleartemplate`, `rebroadcast 0|1`, `lr 0|1`, `unpair`, `newkey`, `reboot`, `help`.
+`status`, `role auto|sender|receiver`, `thr 30..99`, `copies 3..5`, `alert 0|1`, `record 1..120`, `ring`, `monitor 0|1`, `cleartemplate`, `rebroadcast 0|1`, `lr 0|1`, `unpair`, `newkey`, `reboot`, `help`.
 
 ## Detector (components/detector, pure C)
 
@@ -141,7 +142,7 @@ Host tests (gcc, no hardware):
 (or `make -C test/host test` with a local gcc.)
 
 - `test_detector`: synthetic audio. A ding-dong and a 5.5 s melody with a pause are each trained on 3 rings, then 30 positives each (random level, noise and onset) and negatives: noise, a different chime, noise bursts, speech-like audio, knocks, 1 kHz beeps, another melody. Also the threshold, a ring held longer, training with a loud bell-push click before every ring (the click must not end up in the template, and clicks alone must not fire), the template blob round trip, and rejection of old (v1) blobs.
-- `test_proto`: packet build/parse/corruption rejection, dedupe, LED current cap.
+- `test_proto`: packet build/parse/corruption rejection, dedupe, LED current cap, full-ring alert pattern (compared against the v1.1 receiver reference over 30 s, all 12 pixels, 15 s / 3 s durations).
 - `test_record.py`: `tools/record.py` against a simulated sender (`fake_sender`), clean and with dropped/corrupt lines.
 - `wavtool`: the detector on WAV files (16 kHz mono s16): `wavtool train rings.wav -- test a.wav b.wav`. `-o tmpl.bin` saves the template, `load tmpl.bin -- test ...` reuses it, `-t 0.70` sets the threshold.
 - Real-audio evaluation (public doorbells, speech, TV, household noise; data downloaded separately): see `test/eval/README.md` and the results in `test/EVALUATION.md`.

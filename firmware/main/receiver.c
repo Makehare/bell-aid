@@ -9,8 +9,8 @@
 
 static const char *TAG = "receiver";
 
-#define FLASH_RING_MS   15000
-#define FLASH_TEST_MS    3000
+#define FLASH_RING_MS   DBN_ALERT_RING_MS
+#define FLASH_TEST_MS   DBN_ALERT_TEST_MS
 #define PAIR_WINDOW_MS  60000
 
 static uint8_t s_mac[6], s_peer[6], s_key[8];
@@ -30,19 +30,6 @@ void receiver_status_print(void)
            s_mac[0], s_mac[1], s_mac[2], s_mac[3], s_mac[4], s_mac[5], s_paired ? "yes" : "NO",
            s_peer[0], s_peer[1], s_peer[2], s_peer[3], s_peer[4], s_peer[5], s_muted, cfg_u8("rebc", 1),
            radio_lr_active() ? "on" : "off", (unsigned)s_events, s_last_rssi);
-}
-
-/* Full-ring flash: alternating on/off with a bright white phase and a rotating amber chase between. */
-static void draw_flash(uint32_t t_ms)
-{
-    uint32_t ph = t_ms % 800;
-    if (ph < 300) leds_fill(255, 255, 255);                       /* capped to <= 600 mA */
-    else if (ph < 400) leds_clear();
-    else {
-        leds_clear();
-        int head = (int)((ph - 400) * NUM_LEDS / 400);            /* clockwise chase */
-        for (int k = 0; k < 6; k++) leds_set((head + k) % NUM_LEDS, 255, 140, 0);
-    }
 }
 
 static void status_pixel(uint32_t now, uint32_t pair_until, bool flashing)
@@ -107,7 +94,7 @@ void receiver_run(void)
 
         flashing = now - flash_start < flash_dur && flash_dur;
         leds_clear();
-        if (flashing) draw_flash(now - flash_start);
+        if (flashing) leds_alert(now - flash_start);
         status_pixel(now, pair_until, flashing);
         leds_show();
         vTaskDelay(pdMS_TO_TICKS(10));

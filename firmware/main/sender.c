@@ -185,6 +185,7 @@ void sender_cmd_record(int seconds)
     s_monitor = mon;
 }
 
+void sender_cmd_alert(int on) { cfg_set_u8("salert", on ? 1 : 0); }
 void sender_cmd_ring(void) { s_tx_type = DBN_TEST; if (s_tx_task) xTaskNotifyGive(s_tx_task); }
 void sender_cmd_monitor(int on) { s_monitor = on; }
 void sender_cmd_cleartemplate(void) { s_cmd = CMD_CLEAR; }
@@ -194,8 +195,8 @@ void sender_status_print(void)
     printf("role=sender mac=%02x:%02x:%02x:%02x:%02x:%02x template=", s_mac[0], s_mac[1], s_mac[2], s_mac[3], s_mac[4], s_mac[5]);
     if (s_det.have_tmpl) printf("%.2fs/%u-rings", s_det.tmpl.h.len * (float)DET_FRAME / DET_FS, s_det.tmpl.h.rounds);
     else printf("NO (train it)");
-    printf(" thr=%.2f (trained %.2f) copies=%u lr=%s detections=%u db=%.1f score=%.3f key=%02x%02x....\n",
-           s_det.thr, s_det.tmpl.h.thr_pct / 100.0f, cfg_u8("copies", 4), radio_lr_active() ? "on" : "off",
+    printf(" thr=%.2f (trained %.2f) copies=%u alert=%s lr=%s detections=%u db=%.1f score=%.3f key=%02x%02x....\n",
+           s_det.thr, s_det.tmpl.h.thr_pct / 100.0f, cfg_u8("copies", 4), cfg_u8("salert", 1) ? "on" : "off", radio_lr_active() ? "on" : "off",
            (unsigned)s_detect_count, s_db, s_score, s_key[0], s_key[1]);
 }
 
@@ -222,17 +223,26 @@ void sender_run(void)
 
     ui_t ui = UI_ARMED;
     uint32_t t0 = 0, last_round = 0, pair_until = 0, last_beacon = 0, flash_until = 0;
+    uint32_t alert_start = 0, alert_dur = 0;       /* full-ring alert on this unit (same as the receivers) */
     int seen_rounds = 0;
     uint32_t seen_detect = 0;
     for (;;) {
         uint32_t now = now_ms();
         btn_event_t ev = button_poll(now);
 
-        if (s_detect_count != seen_detect) { seen_detect = s_detect_count; flash_until = now + 600; }
+        if (s_detect_count != seen_detect) {
+            seen_detect = s_detect_count; flash_until = now + 600;
+            if (cfg_u8("salert", 1) && ui == UI_ARMED) { alert_start = now; alert_dur = DBN_ALERT_RING_MS; }
+        }
+        bool alerting = alert_dur && now - alert_start < alert_dur;
 
         switch (ui) {
         case UI_ARMED:
-            if (ev == BTN_SHORT) { sender_cmd_ring(); flash_until = now + 600; }
+            if (ev == BTN_SHORT && alerting) alert_dur = 0;            /* dismiss the alert on this unit */
+            else if (ev == BTN_SHORT) {
+                sender_cmd_ring(); flash_until = now + 600;
+                if (cfg_u8("salert", 1)) { alert_start = now; alert_dur = DBN_ALERT_TEST_MS; }
+            }
             else if (ev == BTN_LONG) {
                 s_rounds = 0; seen_rounds = 0; s_cmd = CMD_TRAIN;
                 while (s_cmd) vTaskDelay(pdMS_TO_TICKS(5));
@@ -266,6 +276,13 @@ void sender_run(void)
             }
             if (now > pair_until || ev == BTN_SHORT) ui = UI_ARMED;
             break;
+        }
+
+        alerting = alert_dur && now - alert_start < alert_dur && ui == UI_ARMED;
+        if (alerting) {                                  /* full ring; idle status blips resume afterwards */
+            leds_clear(); leds_alert(now - alert_start); leds_show();
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
         }
 
         /* status pixel */

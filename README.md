@@ -2,7 +2,7 @@
 
 Bell Aid
 
-Release v1.1.
+Release v1.2.
 
 ## Contents
 

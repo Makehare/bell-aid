@@ -2,7 +2,7 @@
 
 **Ein Licht, das blinkt, wenn es an der Tür klingelt**
 
-Version 1.2, 2. November 2026, Makehare
+Version 1.2, 7. November 2026, Makehare
 
 ---
 
@@ -25,7 +25,7 @@ Die Taste reagiert beim **Loslassen**. Während Sie sie gedrückt halten, leucht
 
 | Drücken | Sender | Empfänger |
 |---|---|---|
-| Kurz (< 1,5 s) | Testklingeln senden | Stumm an/aus; beim Blinken: Blinken beenden |
+| Kurz (< 1,5 s) | Testklingeln senden (Sender blinkt 3 s mit); beim Blinken: Blinken beenden | Stumm an/aus; beim Blinken: Blinken beenden |
 | Lang (bei Gelb loslassen) | Anlernen starten | Eigenes Licht testen (3 s) |
 | Sehr lang (bei Magenta loslassen) | Koppeln (30 s) | Koppeln (60 s) |
 
@@ -56,20 +56,20 @@ Die Taste reagiert beim **Loslassen**. Während Sie sie gedrückt halten, leucht
 2. Klingeln und den Gong ganz ausklingen lassen. D1 leuchtet beim Zuhören türkis und blinkt dann grün.
 3. Etwa 3 s warten und erneut klingeln, insgesamt 3-mal.
 4. D1 blinkt 3-mal grün: gespeichert. 3-mal rot: kein Klingeln gehört, bitte neu beginnen.
-5. **Prüfen:** einige Sekunden warten und noch einmal klingeln. D1 muss weiß blinken, und die Empfänger müssen aufleuchten. Falls nicht, erneut anlernen.
+5. **Prüfen:** einige Sekunden warten und noch einmal klingeln. Der ganze Ring des Senders und die Empfänger müssen blinken. Falls nicht, erneut anlernen.
 
 > [!NOTE]
 > Bei einer sehr kurzen Klingel (ein einzelnes „Ding“) kann das Klicken des Klingelknopfs mitgelernt werden. Schlägt die Prüfung immer wieder fehl: Lassen Sie jemand anderen bei geschlossener Tür klingeln, während Sie beim Sender bleiben, und lernen Sie neu an.
 
 ## 5. Im Alltag
 
-Klingelt es, blinkt jeder Empfänger 15 s lang (Test: 3 s); ein kurzer Druck beendet das. Stumm geschaltet zeigt er nur Testklingeln an, bis Sie ihn wieder lautschalten oder ausstecken.
+Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (Test: 3 s): weiß, dann sechs orange Lichter im Uhrzeigersinn. Ein kurzer Druck beendet es nur an diesem Gerät. Ein stumm geschalteter Empfänger zeigt nur Testklingeln an, bis Sie ihn wieder lautschalten oder ausstecken.
 
 | Statusleuchte D1 | Sender | Empfänger |
 |---|---|---|
 | Alle 3 s kurz grün | Bereit | Bereit (gekoppelt) |
 | Orange | Noch keine Klingel gelernt | Nicht gekoppelt |
-| Weißes Blinken | Klingel erkannt oder Test gesendet | (ganzer Ring blinkt) |
+| Ganzer Ring blinkt | Klingel erkannt oder Test gesendet | Klingel erkannt |
 | Dauerhaft schwach rot | | Stumm |
 | Magenta / schnell blau blinkend | Koppeln | Wartet auf Kopplung |
 | Blau pulsierend, türkis, grünes Blinken | Anlernen: wartet, hört zu, Klingeln erfasst | |

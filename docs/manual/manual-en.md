@@ -2,7 +2,7 @@
 
 **A light that flashes when your doorbell rings**
 
-Version 1.2, 2 November 2026, Makehare
+Version 1.2, 7 November 2026, Makehare
 
 ---
 
@@ -25,7 +25,7 @@ The button acts when you **release** it. While you hold it, the status light D1 
 
 | Press | Sender | Receiver |
 |---|---|---|
-| Short (< 1.5 s) | Send a test ring | Mute on/off; while flashing: stop the flash |
+| Short (< 1.5 s) | Send a test ring (the sender also flashes for 3 s); while flashing: stop the flash on this unit only | Mute on/off; while flashing: stop the flash |
 | Long (release on yellow) | Start training | Test its own light (3 s) |
 | Very long (release on magenta) | Pairing (30 s) | Pairing (60 s) |
 
@@ -56,20 +56,20 @@ The button acts when you **release** it. While you hold it, the status light D1 
 2. Ring the doorbell and let it play to the end. D1 is cyan while it listens, then flashes green.
 3. Wait about 3 s and ring again; 3 rings in total.
 4. D1 blinks green 3 times: saved. Red 3 times: no ring heard, start again.
-5. **Check:** wait a few seconds and ring once more. D1 must flash white and the receivers must light up. If they do not, train again.
+5. **Check:** wait a few seconds and ring once more. The sender's whole ring and the receivers must flash. If they do not, train again.
 
 > [!NOTE]
 > With a very short bell (a single "ding"), the click of the bell push can be learned with it. If the check keeps failing, have someone else press the push with the door closed while you stay at the sender, and train again.
 
 ## 5. Everyday use
 
-When the bell rings, each receiver flashes for 15 s (test: 3 s); a short press stops it. A muted receiver shows only test rings until you unmute or unplug it.
+When the bell rings, the sender and each receiver flash the whole ring for 15 s (test: 3 s): white, then six amber lights chasing clockwise. A short press stops the flash on that unit only. The flash never plays during training or pairing. A muted receiver shows only test rings until you unmute or unplug it.
 
 | Status light D1 | Sender | Receiver |
 |---|---|---|
 | Green blip every 3 s | Ready | Ready (paired) |
 | Orange | No doorbell learned yet | Not paired |
-| White flash | Bell heard or test sent | (whole ring flashes) |
+| Whole ring flashes | Bell heard or test sent (stop: short press) | Bell heard (stop: short press) |
 | Dim red, steady | | Muted |
 | Magenta / fast blue blink | Pairing | Waiting for pairing |
 | Blue pulse, cyan, green flash | Training: waiting, listening, ring captured | |

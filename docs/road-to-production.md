@@ -2,7 +2,7 @@
 
 **From the delivered design files to a product you can sell in the EU (Germany first)**
 
-Version 1.0, 1 November 2026, Makehare
+Version 1.2, 7 November 2026, Makehare
 
 *General information, not legal advice.*
 
@@ -16,7 +16,7 @@ Our recommendations:
 
 1. **Sell it as a doorbell signalling device for the home, not as a medical device.** Your claims decide which law applies (section 1).
 2. **Keep the pre-certified Espressif module (ESP32-S3-MINI-1).** The module's radio test reports can feed into your own assessment. The product as a whole still needs its own CE assessment (EMC, radio, safety, RF exposure) under the Radio Equipment Directive (section 2).
-3. **Make one design revision (rev B) before you request quotes.** It replaces the discontinued LED, splits the board into sender and receiver variants, removes the hand work and prepares the housing for series production (section 3).
+3. **Make one design revision (rev B) before you request quotes.** It names a second source for the LED, splits the board into sender and receiver variants, removes the hand work and prepares the housing for series production (section 3).
 4. **Start with printed or cast housings and one EMS partner.** Move to injection moulding once demand is proven. Tooling is the largest single cost (section 6).
 5. **Register before the first sale:** WEEE (stiftung ear) and packaging (LUCID). Then prepare the technical file and the EU declaration of conformity, and plan for the Cyber Resilience Act, which fully applies from 11 December 2027 (sections 2 and 7).
 
@@ -132,15 +132,14 @@ Bell Aid runs from a standard USB charger. If you **bundle** a charger, buy a CE
 
 | # | Item | Why | Recommendation |
 |---|---|---|---|
-| 1 | **LED WS2812B-B/T (D1–D12) is discontinued** | LCSC stock 0, JLC stock 1 on 2026-11-01. The board cannot be assembled as designed. | Replace it with a 5050 drop-in, for example Worldsemi WS2812B-V5/W (LCSC C2874885) or XINGLIGHT XL-5050RGBC-2812B (LCSC C2843785). Verify pinout, footprint, timing and current against the datasheet, then confirm on a built board. Name an approved alternate in the BOM. |
-| 2 | Universal population (mic and 12 LEDs on every board) | Each receiver carries an unused microphone, one of the costlier parts. | Two assembly variants from one PCB: **sender** (mic, 1 LED, R8 fitted) and **receiver** (no mic, 12 LEDs). |
+| 1 | LED D1–D12 has a single source | The original WS2812B-B/T was discontinued. Since design version 1.0 the BOM uses its drop-in successor Worldsemi WS2812B-V6 (LCSC C52917433, JLC stock 123,283 on 2026-11-01): same package, pinout and timing, no board change. The board can be assembled as designed. | Confirm LED current and colour on a built board with the V6. Name an approved alternate in the series BOM, for example Worldsemi WS2812B-V5/W (LCSC C2874885) or XINGLIGHT XL-5050RGBC-2812B (LCSC C2843785), after checking pinout, footprint, timing and current against its datasheet. |
+| 2 | Universal population (mic and 12 LEDs on every board) | Each receiver carries an unused microphone, one of the costlier parts. | Two assembly variants from one PCB: **sender** (mic, 12 LEDs, R8 fitted) and **receiver** (no mic, 12 LEDs). The sender keeps all 12 LEDs because it plays the same full-ring alert as the receivers (firmware setting `alert 1`, default on). A sender with only 1 LED saves 11 LEDs but loses this alert. |
 | 3 | R8 role strap fitted by hand | Hand work costs money and causes errors. | Place R8 by machine in the sender variant, or set the role in the production test station. |
-| 4 | Mounting holes made at Ø2.2 and drilled out by hand to Ø3.2 | Hand work | Specify Ø3.2 NPTH in the fab data. |
-| 5 | Surface finish HASL | LGA parts (module, mic) need flat pads. | Consider ENIG for series. Decide together with the EMS. |
-| 6 | Panelisation | Single 50 × 82 mm boards are slow to assemble. | Let the EMS define the panel (for example 2 × 3 with rails, fiducials and tooling holes). Keep the USB-C edge (receptacle flush with the board edge) and the antenna keepout clear of V-scores and break tabs. |
-| 7 | Single-side assembly, 9 test pads on the back | Already production-friendly | Keep as is. These pads are the contact points for the test jig (section 5). |
-| 8 | X-ray for LGA parts (U1 module, U4 mic) | Their joints are hidden under the part | Sample X-ray at FAI and after process changes. |
-| 9 | MEMS mic acoustic port | Contamination makes it deaf. | Follow the mic datasheet's assembly notes (port protection, washing restrictions). |
+| 4 | Surface finish HASL | LGA parts (module, mic) need flat pads. | Consider ENIG for series. Decide together with the EMS. |
+| 5 | Panelisation | Single 50 × 82 mm boards are slow to assemble. | Let the EMS define the panel (for example 2 × 3 with rails, fiducials and tooling holes). Keep the USB-C edge (receptacle flush with the board edge) and the antenna keepout clear of V-scores and break tabs. |
+| 6 | Single-side assembly, 9 test pads on the back | Already production-friendly | Keep as is. These pads are the contact points for the test jig (section 5). |
+| 7 | X-ray for LGA parts (U1 module, U4 mic) | Their joints are hidden under the part | Sample X-ray at FAI and after process changes. |
+| 8 | MEMS mic acoustic port | Contamination makes it deaf. | Follow the mic datasheet's assembly notes (port protection, washing restrictions). |
 
 **Parts availability and second sources** (current BOM, stock status of 2026-11-01):
 
@@ -214,7 +213,7 @@ Where to find partners: German trade fairs (productronica in Munich and embedded
 
 | Stage | Check | Note |
 |---|---|---|
-| Incoming inspection | Part numbers, lot codes, moisture-sensitive packaging | Especially the module, the mic and the substitute LED |
+| Incoming inspection | Part numbers, lot codes, moisture-sensitive packaging | Especially the module, the mic and the LED |
 | After reflow | SPI, AOI, sample X-ray of U1/U4 | Standard EMS process |
 | **PCBA end-of-line test** (jig) | Flash, self-test, radio, LEDs, mic, button | See 5.2 and 5.3 |
 | Final assembly | Power-on, LED ring, button, radio link with a golden unit, look and fit | 20–40 s per unit *(estimate)* |
@@ -236,7 +235,7 @@ Where to find partners: German trade fairs (productronica in Munich and embedded
 ### 5.4 AQL sampling, first-article inspection, traceability
 
 - **AQL:** ISO 2859-1 (2026 edition) sets the sampling plans for lot-by-lot inspection.[27] Common practice in consumer electronics, not a legal requirement: critical 0, major 0.65–1.0, minor 2.5–4.0 at general inspection level II.
-- **First-article inspection (FAI)** for each new build, new tool or part change: full dimensional report of moulded parts (T1 samples) against the drawing, a 100 % functional test of the first units, a BOM check (correct LED substitute and orientation), X-ray of the LGA parts and a comparison with a signed **golden sample**. No mass run before written FAI approval.
+- **First-article inspection (FAI)** for each new build, new tool or part change: full dimensional report of moulded parts (T1 samples) against the drawing, a 100 % functional test of the first units, a BOM check (correct LED part number and orientation), X-ray of the LGA parts and a comparison with a signed **golden sample**. No mass run before written FAI approval.
 - **Traceability:** the RED requires a type, batch or serial number on each unit.[1] Use the module's unique **MAC address as the serial number**. Print it, with the model and date code, on the rating label, and link it to the test log, the firmware checksum and the component lot codes (module, mic). Keep a register of complaints and returns. The RED expects this "when deemed appropriate" with regard to the risks.[1]
 
 ---
@@ -254,7 +253,7 @@ Where to find partners: German trade fairs (productronica in Munich and embedded
 
 | Phase | Content | Duration | Budget |
 |---|---|---|---|
-| A. Design revision B | LED change, variants, DFM fixes, housing for the chosen process, self-test firmware, CRA preparation | 3–6 weeks | Design fee, fixed-price quote |
+| A. Design revision B | LED second source, variants, DFM fixes, housing for the chosen process, self-test firmware, CRA preparation | 3–6 weeks | Design fee, fixed-price quote |
 | B. Engineering samples | 20–50 units from the future EMS, printed or cast housings, internal verification | 3–5 weeks | 800–3,000 € |
 | C. Compliance | Pre-compliance EMC scan, then accredited tests: EN 300 328 (module reuse), EN 301 489-1/-17, EN IEC 62368-1, EN 62479; technical file and declaration | 4–8 weeks (book lab slots early) | Pre-scan 1,000–2,500 €; full tests 5,000–15,000 € |
 | D. Tooling (optional at start) | Moulds, T1 samples, corrections T2 | 8–14 weeks | 10,000–35,000 € (aluminium) or 30,000–80,000 € (steel) |
@@ -269,7 +268,7 @@ Where to find partners: German trade fairs (productronica in Munich and embedded
 
 1. **Fix the product claim and name.** Write the intended purpose as a household doorbell signal, not a medical device (section 1), and use the same wording on the label, in the manual, on the website and in listings.
 2. **Choose the market-entry volume and the housing route** (printed or cast vs. moulded) from section 6. This choice drives budget and timeline.
-3. **Order design revision B:** replacement LED with an approved alternate, sender/receiver variants, removal of hand work, housing DFM, `selftest` command, secure-boot/CRA decision.
+3. **Order design revision B:** approved alternate for the LED, sender/receiver variants, removal of hand work, housing DFM, `selftest` command, secure-boot/CRA decision.
 4. **Freeze the radio configuration** (channel, power, Long Range mode on or off) and get the module's CE test report set and integration conditions from Espressif.
 5. **Send the RFQ package** (section 4.2) to at least three EMS and, if you mould, three moulders. Audit the top two with the questions in 4.3.
 6. **Build 20–50 engineering samples** at the chosen EMS and verify range, detection, LED current and thermal behaviour on real doorbells.

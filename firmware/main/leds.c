@@ -39,6 +39,11 @@ void leds_set(int i, uint8_t r, uint8_t g, uint8_t b)
 
 void leds_fill(uint8_t r, uint8_t g, uint8_t b) { for (int i = 0; i < NUM_LEDS; i++) leds_set(i, r, g, b); }
 
+void leds_alert(uint32_t t_ms)
+{
+    for (int i = 0; i < NUM_LEDS; i++) { uint8_t c[3]; dbn_alert_pixel(t_ms, i, NUM_LEDS, c); leds_set(i, c[0], c[1], c[2]); }
+}
+
 void leds_show(void)
 {
     uint8_t out[NUM_LEDS * 3];

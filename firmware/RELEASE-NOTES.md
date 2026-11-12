@@ -1,5 +1,12 @@
 # Release notes (bell-aid firmware)
 
+## v1.3.1
+
+- **Web updater page only; firmware unchanged.** `doorbell-app.bin` is byte-identical to v1.3 (same sha256); devices already on v1.3 need no update. The version label is not compiled into the firmware.
+- Updater page footer now links the legal notice (Impressum, https://makehare.com/impressum.html) and a new own privacy notice `docs/update/datenschutz.html` (DE + EN). The page still sets no cookies and makes no third-party requests.
+- DE manual wording tightened (erase warning, safety bullet, cable figure).
+- Manual: DE erase warning aligned with EN, and the EN erase warning now names what is lost (role, pairing, trained doorbell sound). Minor DE wording tightened to keep 4 pages: section 7 intro, section 8 "Entsorgung" and "Vor der Abgabe". No safety content removed.
+
 ## v1.3
 
 - **Triple press turns the green heartbeat on/off** (sender and receiver). Three short presses, each gap <= 0.4 s. Confirmation on D1: green x2 = on, one slow green fade-out = off. Stored in NVS (`hb`), default on, survives power loss. Console: `heartbeat 0|1|on|off` (anything else prints the usage and changes nothing); `status` shows `heartbeat=on|off`.

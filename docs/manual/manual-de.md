@@ -87,10 +87,10 @@ Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (
 
 ## 7. Software aktualisieren
 
-Einstellungen und Kopplung bleiben erhalten. Reagiert das Licht danach nicht mehr auf Ihre Klingel, bringen Sie dem Gerät den Klingelton erneut bei (Abschnitt 4, Schritt 5).
+Einstellungen und Kopplung bleiben erhalten. Reagiert das Licht danach nicht mehr auf Ihre Klingel, Klingelton neu anlernen (Abschnitt 4, Schritt 5).
 
 1. **Ein** Gerät per USB-Datenkabel anstecken, <https://makehare.github.io/bell-aid/update/> in **Chrome oder Edge** öffnen, **Aktualisieren** klicken.
-2. **USB JTAG/serial debug unit** wählen, Verbinden, **Install Bell Aid**; **Erase device** leer lassen (sonst gehen Einstellungen verloren), **Next**, **Install**; bei **Installation complete!** (ca. 2 Min.) **Next**.
+2. **USB JTAG/serial debug unit** wählen, Verbinden, **Install Bell Aid**; **Erase device** leer lassen (sonst gehen Rolle, Kopplung und Klingelton verloren), **Next**, **Install**; bei **Installation complete!** (ca. 2 Min.) **Next**.
 3. Abziehen; jedes Gerät einzeln wiederholen.
 
 ## 8. Sicherheit, Funkdaten und Entsorgung
@@ -110,6 +110,6 @@ Einstellungen und Kopplung bleiben erhalten. Reagiert das Licht danach nicht meh
 | Open-Source-Dateien | https://github.com/Makehare/bell-aid |
 
 ![Durchgestrichene Mülltonne](img/weee-bin.svg){: style="float:left; height:9mm; margin:0.5mm 3mm 0 0"}
-**Entsorgung:** Die durchgestrichene Mülltonne bedeutet: nicht in den Hausmüll, sondern zur Elektrogeräte-Sammelstelle.
+**Entsorgung:** nicht in den Hausmüll, sondern zur Sammelstelle für Elektrogeräte.
 
-**Vor der Abgabe:** Das Gerät speichert keine personenbezogenen Daten, nur Rolle, Kopplung und Klingelton. Löschen: das vollständige Firmware-Image neu aufspielen (Bauanleitung, 6.2).
+**Vor der Abgabe:** Gespeichert sind nur Rolle, Kopplung und Klingelton, keine personenbezogenen Daten. Löschen: Firmware-Image komplett neu aufspielen (Bauanleitung, 6.2).

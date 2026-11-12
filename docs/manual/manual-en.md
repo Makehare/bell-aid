@@ -90,7 +90,7 @@ When the bell rings, the sender and each receiver flash the whole ring for 15 s 
 Settings and pairing stay. If the light no longer reacts to your bell, teach the bell sound again (section 4, step 5). You need **Chrome or Edge** on a computer and a data USB cable (some charge-only cables do not work).
 
 1. Plug in **one** device. Open <https://makehare.github.io/bell-aid/update/>, click **Update**.
-2. Pick **USB JTAG/serial debug unit**, Connect, then **Install Bell Aid**. Leave **Erase device** unticked (if ticked, settings and pairing are wiped), click **Next**, then **Install**. Wait for **Installation complete!** (about 2 minutes), click **Next**. The window is in English.
+2. Pick **USB JTAG/serial debug unit**, Connect, then **Install Bell Aid**. Leave **Erase device** unticked (if ticked, role, pairing and the trained doorbell sound are lost), click **Next**, then **Install**. Wait for **Installation complete!** (about 2 minutes), click **Next**. The window is in English.
 3. Unplug. Repeat for each device, one at a time.
 
 ## 8. Safety, radio data and disposal

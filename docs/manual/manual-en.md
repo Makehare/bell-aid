@@ -2,17 +2,13 @@
 
 **A light that flashes when your doorbell rings**
 
-Version 1.2, 7 November 2026, Makehare
+Version 1.3, 12 November 2026, Makehare
 
 ---
 
 ## 1. What it does
 
-The **sender** stands near your doorbell and listens for its sound. When it hears the bell, every paired **receiver** in your home flashes its light ring. No Wi-Fi, no app, no cloud: the sound is learned and recognised on the sender itself. Sender and receiver look the same; one sender works with up to 5 receivers.
-
-![Front: light ring with the button in the centre](../renders/final/03-front.png){: style="max-height:34mm"}
-
-*Light ring with the button in the centre; one light of the ring is the status light D1. Rendering of the CAD model, not a photograph; colours may differ.*
+The **sender** stands near your doorbell and listens for its sound. When it hears the bell, every paired **receiver** in your home flashes its light ring. No Wi-Fi, no app, no cloud: the sound is learned and recognised on the sender itself. Sender and receiver look the same; one sender works with up to 5 receivers. One light of the ring is the status light D1.
 
 ## 2. What you need
 
@@ -21,24 +17,26 @@ The **sender** stands near your doorbell and listens for its sound. When it hear
 
 ## 3. The button
 
-The button acts when you **release** it. While you hold it, the status light D1 turns **yellow** at 1.5 s and **magenta** at 5 s, so you know when to let go.
+The button acts when you **release** it; a short press acts about 0.4 s later, because a second press may follow. While you hold it, the status light D1 turns **yellow** at 1.5 s and **magenta** at 5 s, so you know when to let go.
 
 | Press | Sender | Receiver |
 |---|---|---|
 | Short (< 1.5 s) | Send a test ring (the sender also flashes for 3 s); while flashing: stop the flash on this unit only | Mute on/off; while flashing: stop the flash |
 | Long (release on yellow) | Start training | Test its own light (3 s) |
 | Very long (release on magenta) | Pairing (30 s) | Pairing (60 s) |
+| 3 short presses in a row (each pause up to 0.4 s) | Green light (heartbeat) on/off | Green light (heartbeat) on/off |
 
-> [!TIP]
-> Hold the stand with one hand while you press the button; the light stand tips over easily.
+Triple press: D1 shows green twice (on) or one slow green fade-out (off). Each unit keeps its own setting, also after unplugging. Two presses, or four or more, do nothing.
+
+**Tip:** hold the stand with one hand while you press the button; it tips over easily.
 
 ## 4. Set up
 
 **1. Plug in.** Lift the unit out of its stand and plug the cable in while you hold the unit in your hand. Then lower it into the stand, hook the cable into the J slot in the back wall and lead it down and to the rear. To unplug: unhook the cable, lift the unit out, then pull the plug.
 
-![USB-C cable hooked into the slot in the back of the stand](../renders/final/05-detail-usb-c-j-slot.png){: style="max-height:30mm"}
+![USB-C cable hooked into the slot in the back of the stand](../renders/final/05-detail-usb-c-j-slot.png){: style="max-height:13mm"}
 
-*Back view, stand shown see-through: cable plugged in and hooked into the slot. Rendering of the CAD model, not a photograph.*
+*Back view, stand see-through: cable in the slot. Rendering of the CAD model, not a photograph.*
 
 **2. Choose the sender.** Every unit starts as a receiver. To make one unit the sender: with the unit in your hand (out of its stand, as in step 1), hold its button while you plug in the cable and keep holding for 5 s. D1 turns yellow, then blinks green 3 times, and the unit restarts as the sender. The same gesture switches it back.
 
@@ -67,12 +65,13 @@ When the bell rings, the sender and each receiver flash the whole ring for 15 s 
 
 | Status light D1 | Sender | Receiver |
 |---|---|---|
-| Green blip every 3 s | Ready | Ready (paired) |
+| Green blip every 3 s (heartbeat) | Ready | Ready (paired) |
 | Orange | No doorbell learned yet | Not paired |
 | Whole ring flashes | Bell heard or test sent (stop: short press) | Bell heard (stop: short press) |
 | Dim red, steady | | Muted |
 | Magenta / fast blue blink | Pairing | Waiting for pairing |
 | Blue pulse, cyan, green flash | Training: waiting, listening, ring captured | |
+| Green twice / one slow green fade-out | Triple press: heartbeat switched on / off | Triple press: heartbeat switched on / off |
 | Green 3x / red 3x | Training saved / failed | Paired |
 
 ## 6. Quick fixes
@@ -83,9 +82,18 @@ When the bell rings, the sender and each receiver flash the whole ring for 15 s 
 | Orange light | Receiver: pair it (4, step 3). Sender: train it (4, step 5). |
 | Test not received | Pair the receiver again; test it closer to the sender (walls cut range). |
 | Bell not detected | Train again in place; keep the microphone hole free. Short bell: note in 4. |
+| Green blink bothers me at night | Press the button 3 times in a row on each unit; repeat to switch it on again. |
 | False alarms | Train again with 3 rings in a quiet room. |
 
-## 7. Safety, radio data and disposal
+## 7. Updating the software
+
+Settings and pairing stay. If the light no longer reacts to your bell, teach the bell sound again (section 4, step 5). You need **Chrome or Edge** on a computer and a data USB cable (some charge-only cables do not work).
+
+1. Plug in **one** device. Open <https://makehare.github.io/bell-aid/update/>, click **Update**.
+2. Pick **USB JTAG/serial debug unit**, Connect, then **Install Bell Aid**. Leave **Erase device** unticked (if ticked, settings and pairing are wiped), click **Next**, then **Install**. Wait for **Installation complete!** (about 2 minutes), click **Next**. The window is in English.
+3. Unplug. Repeat for each device, one at a time.
+
+## 8. Safety, radio data and disposal
 
 **Intended use:** only as a visual doorbell signal in the home. **DIY open-source project:** you build and use it at your own risk; it is not a certified product.
 

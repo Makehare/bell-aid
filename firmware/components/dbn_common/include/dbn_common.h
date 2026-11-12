@@ -54,3 +54,7 @@ void dbn_alert_pixel(uint32_t t_ms, int i, int npix, uint8_t rgb[3]);
 uint32_t dbn_crc32(const void *data, size_t n);            /* same value as zlib.crc32 */
 #define DBN_REC_LINE_MAX(nbytes) (32 + ((nbytes) + 2) / 3 * 4 + 2)
 size_t   dbn_rec_line(uint32_t seq, const void *pcm, size_t nbytes, char *out);   /* returns length, no NUL */
+
+/* Console on/off argument: "0"|"off" -> 0, "1"|"on" -> 1 (exact, case-insensitive). Anything else (NULL, "", "abc", "2", "1x")
+ * returns false and leaves *out untouched. */
+bool dbn_parse_onoff(const char *s, int *out);

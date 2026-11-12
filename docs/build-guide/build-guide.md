@@ -1,4 +1,4 @@
-# Doorbell notifier: build guide (v1.2)
+# Doorbell notifier: build guide (v1.3)
 
 A small light that flashes when your doorbell rings. One unit (the **sender**) sits near the doorbell and listens for its sound; one or more units (the **receivers**) sit elsewhere in the home and flash their LED ring when the sender hears the bell. The radio link is ESP-NOW, so no Wi-Fi network or app is needed.
 
@@ -215,6 +215,7 @@ esptool.py --chip esp32s3 write_flash 0x0 firmware/dist/doorbell-esp32s3-merged.
 esptool.py --chip esp32s3 write_flash 0x20000 firmware/dist/doorbell-app.bin
 ```
 
+- **Web updater (updates only):** instead of esptool, an already set-up unit can be updated in Chrome or Edge at <https://makehare.github.io/bell-aid/update/>. The page writes only the app image at 0x20000 (the same as the update command above), does not erase anything as long as the "Erase device" box stays unticked, and keeps pairing and settings (if the light no longer reacts to the bell, teach the bell sound again). One device at a time; pick "USB JTAG/serial debug unit" in the browser window, then "Install Bell Aid", leave "Erase device" unticked (if ticked, settings and pairing are wiped), Next, Install, wait for "Installation complete!" (about 2 minutes). The first install of a new board stays the full image above, the page cannot do that. The page serves the app image of the current release (version shown on it).
 - **The merged image erases all settings**: the unit starts again as an unpaired receiver (sender if R8 is fitted) with no learned sound, and a sender creates a new pairing key, so every receiver must be paired again (sections 6.3 to 6.5). Use it for updates only if the release notes say the bootloader or partition table changed.
 - Newer esptool versions also accept `esptool` instead of `esptool.py`. Add `-p <port>` if esptool does not find the port by itself. Close any serial terminal that has the port open.
 - esptool normally switches the chip into download mode by itself through the built-in USB interface. This works on a blank board and on a running unit in a closed case, so no buttons are needed. **If it cannot connect:** open the case, hold **BOOT** (SW2), press and release **RESET** (SW3), release BOOT, and run the command again.
@@ -257,19 +258,23 @@ The learned sound and threshold are saved on the device.
 
 | Press (acts on release) | Sender | Receiver |
 |---|---|---|
-| Short (< 1.5 s) | Send a TEST ring (also: finish/abort training, stop pairing) | Mute on/off. While flashing: stop the flash |
+| Short (< 1.5 s), acts about 0.4 s after release | Send a TEST ring (also: finish/abort training, stop pairing) | Mute on/off. While flashing: stop the flash |
 | Long (1.5-5 s, D1 yellow) | Start training | Local test flash (3 s) |
 | Very long (> 5 s, D1 magenta) | Pairing mode (30 s) | Pairing mode (60 s) |
+| Triple (3 short presses, each pause up to 0.4 s) | Heartbeat on/off, stored | Heartbeat on/off, stored |
+
+A short press is decided 0.4 s after release, because a second press may follow. Exceptions without delay: stopping a running alert, and short presses during training and sender pairing. Pressing three times during an alert therefore stops it on the first press and does not toggle. Two presses, or four or more, do nothing. The heartbeat setting is stored in the unit (NVS key `hb`, default on), so it survives unplugging; each unit has its own setting. Console: `heartbeat 0|1`; `status` shows `heartbeat=on|off`.
 
 | D1 status LED | Sender | Receiver |
 |---|---|---|
-| Green blip every 3 s | Armed | OK (paired) |
+| Green blip every 3 s (heartbeat; off after a triple press) | Armed | OK (paired) |
 | Orange blip/blink | No doorbell sound trained yet | Not paired |
 | Full-ring alert (white, amber chase) | Ring detected (15 s) or TEST sent (3 s); short press stops it | Same (whole ring) |
 | Steady dim red | | Muted (until the next restart) |
 | Yellow / magenta while held | Long / very long press reached | Same |
 | Pairing | Magenta blink (30 s) | Fast blue blink (60 s) |
 | Blue pulse, cyan, green flash | Training: waiting, recording, ring captured | |
+| Green x2 / one slow green fade-out (about 1 s) | Triple press: heartbeat on / off | Triple press: heartbeat on / off |
 | Green x3 / red x3 | Training saved / failed; green x3 also: role changed | Paired; role changed |
 
 ---
@@ -280,12 +285,13 @@ The learned sound and threshold are saved on the device.
 
 Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 
-1. **Power:** each unit shows a D1 status colour within a few seconds of plugging in (section 6.6). A paired, trained unit shows only a short green blip every 3 s.
+1. **Power:** each unit shows a D1 status colour within a few seconds of plugging in (section 6.6). A paired, trained unit shows only a short green blip every 3 s (unless the heartbeat is switched off, section 6.6).
 2. **Receiver LEDs:** long press (1.5-5 s) on a receiver: all 12 LEDs flash for 3 s.
 3. **Link:** short press on the sender: it sends a TEST ring and plays the 3 s alert on its own ring too; every paired receiver flashes for 3 s. TEST also shows on a muted receiver, so you can check the link at any time.
 4. **Detection:** ring the real doorbell: the sender and the receivers (if not muted) all play the full-ring alert, white with an amber chase, for 15 s. A short press on a unit stops the alert on that unit.
 5. **Range:** carry a receiver to each room where you want it and repeat step 3. Receivers repeat each ring once to cover dead spots (`rebroadcast 1`, on by default).
 6. **Stand:** the case sits firmly in the Foot, the cable is hooked in the J slot, and the stand stands flat.
+7. **Heartbeat:** press the button 3 times in a row (each pause up to 0.4 s) on each unit. D1 shows green x2 (heartbeat on) or one slow green fade-out (off); the green blip every 3 s stops or returns. Unplug and re-plug: the setting is kept. A single press still sends a TEST / toggles mute, about 0.4 s after release, and never toggles the heartbeat.
 
 ### 7.2 Troubleshooting
 
@@ -323,4 +329,4 @@ Do this after sections 6.3 to 6.5 (role set, receivers paired, bell trained).
 
 ---
 
-*Doorbell notifier v1.2, open-source hardware. All images in this guide are renderings of the CAD model, not photographs of a physical product.*
+*Doorbell notifier v1.3, open-source hardware. All images in this guide are renderings of the CAD model, not photographs of a physical product.*

@@ -27,6 +27,19 @@ uint8_t cfg_u8(const char *key, uint8_t def)
 
 void cfg_set_u8(const char *key, uint8_t v) { nvs_set_u8(s_nvs, key, v); nvs_commit(s_nvs); }
 
+/* heartbeat flag: cached (read from NVS on first use), written through on change */
+static volatile int s_hb = -1;
+bool hb_enabled(void)
+{
+    if (s_hb < 0) s_hb = cfg_u8("hb", 1) ? 1 : 0;
+    return s_hb != 0;
+}
+void hb_set(bool on)
+{
+    s_hb = on ? 1 : 0;
+    cfg_set_u8("hb", on ? 1 : 0);
+}
+
 bool cfg_blob_get(const char *key, void *buf, size_t want_len)
 {
     size_t len = 0;

@@ -1,3 +1,4 @@
+#include <strings.h>
 #include "dbn_common.h"
 #include <string.h>
 #include <stdio.h>
@@ -93,4 +94,12 @@ void dbn_alert_pixel(uint32_t t_ms, int i, int npix, uint8_t rgb[3])
     int head = (int)((ph - 400) * (uint32_t)npix / 400);
     int d = ((i - head) % npix + npix) % npix;
     if (d < 6) { rgb[0] = 255; rgb[1] = 140; rgb[2] = 0; }
+}
+
+bool dbn_parse_onoff(const char *s, int *out)
+{
+    if (!s) return false;
+    if (!strcmp(s, "1") || !strcasecmp(s, "on")) { *out = 1; return true; }
+    if (!strcmp(s, "0") || !strcasecmp(s, "off")) { *out = 0; return true; }
+    return false;
 }

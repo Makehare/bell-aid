@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bell Aid – Firmware update</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+@font-face{font-family:"Inter";src:url(fonts/Inter.ttf) format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url(fonts/SpaceGrotesk.ttf) format("truetype");font-weight:300 700;font-display:swap}
+:root{--ink:#10202E;--paper:#F7F5F0;--crimson-deep:#D62846;--petrol:#1F6F78;--sand:#E8D5B5;--steel:#5A6B7A;--mist:#E3E8EC;
+--font-display:"Space Grotesk",system-ui,sans-serif;--font-body:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 var(--font-body)}
+header,main,footer{max-width:42rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;padding-bottom:1rem}
+header img{height:2.2rem;width:auto;display:block}
+.lang button{font:inherit;font-size:.9rem;border:1px solid var(--steel);background:transparent;color:var(--ink);padding:.25rem .7rem;cursor:pointer}
+.lang button:first-child{border-radius:.4rem 0 0 .4rem}.lang button:last-child{border-radius:0 .4rem .4rem 0;border-left:0}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+h1{font:700 1.953rem/1.2 var(--font-display);margin:1.5rem 0 .5rem}
+h2{font:600 1.25rem/1.3 var(--font-display);margin:2rem 0 .5rem}
+.ver{display:inline-block;background:var(--sand);padding:.1rem .6rem;border-radius:.4rem;font-weight:600}
+.card{background:#fff;border:1px solid var(--mist);border-radius:.75rem;padding:1.5rem;margin:1.5rem 0;text-align:center}
+button.update{font:600 1.25rem var(--font-display);background:var(--crimson-deep);color:#fff;border:0;border-radius:.5rem;padding:.8rem 2.5rem;cursor:pointer}
+button.update:hover{filter:brightness(.92)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+ol{padding-left:1.3rem}li{margin:.5rem 0}
+.warn{background:var(--sand);border-left:.4rem solid var(--crimson-deep);padding:.9rem 1.1rem;border-radius:.4rem;margin:1.5rem 0}
+.note{color:var(--steel);font-size:.9rem}
+[hidden]{display:none!important}
+footer{padding-top:2rem;padding-bottom:3rem;color:var(--steel);font-size:.9rem}
+a{color:var(--petrol)}
+</style>
+</head>
+<body>
+<header>
+  <img src="makehare-logo.svg" alt="Makehare">
+  <div class="lang" role="group" aria-label="Language / Sprache">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+  </div>
+</header>
+<main>
+  <h1 data-en="Bell Aid firmware update" data-de="Bell Aid Firmware-Update">Bell Aid firmware update</h1>
+  <p><span data-en="Firmware version" data-de="Firmware-Version">Firmware version</span> <span class="ver" id="ver">v<!--ver-->1.3<!--/ver--></span></p>
+  <p data-en="This page installs the new software on your Bell Aid devices. Settings and pairing stay. If the light no longer reacts to your bell, teach the bell sound again (section 4, step 5 of the manual)."
+     data-de="Diese Seite installiert die neue Software auf Ihren Bell-Aid-Geräten. Einstellungen und Kopplung bleiben erhalten. Reagiert das Licht danach nicht mehr auf Ihre Klingel, bringen Sie dem Gerät den Klingelton erneut bei (Abschnitt 4, Schritt 5 der Anleitung).">This page installs the new software on your Bell Aid devices. Settings and pairing stay. If the light no longer reacts to your bell, teach the bell sound again (section 4, step 5 of the manual).</p>
+
+  <div id="unsupported" class="warn" hidden role="alert">
+    <strong data-en="This browser cannot update the device." data-de="Dieser Browser kann das Gerät nicht aktualisieren.">This browser cannot update the device.</strong><br>
+    <span data-en="Please open this page in Google Chrome or Microsoft Edge on a Windows, Mac, Linux or Chromebook computer. Phones, tablets, Firefox and Safari do not work."
+          data-de="Bitte öffnen Sie diese Seite in Google Chrome oder Microsoft Edge auf einem Windows-, Mac-, Linux- oder Chromebook-Computer. Handys, Tablets, Firefox und Safari funktionieren nicht.">Please open this page in Google Chrome or Microsoft Edge on a Windows, Mac, Linux or Chromebook computer. Phones, tablets, Firefox and Safari do not work.</span>
+  </div>
+
+  <div id="installer" class="card">
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="update" type="button" data-en="Update" data-de="Aktualisieren">Update</button>
+      <span slot="unsupported"></span>
+      <span slot="not-allowed"></span>
+    </esp-web-install-button>
+  </div>
+
+  <h2 data-en="Steps" data-de="Schritte">Steps</h2>
+  <ol id="steps-en" data-lang-block="en">
+    <li>Use <strong>Chrome or Edge</strong> on a computer.</li>
+    <li>Plug in <strong>one</strong> Bell Aid device with a USB cable that carries data (some charge-only cables do not work).</li>
+    <li>Click <strong>Update</strong>.</li>
+    <li>In the window that opens, pick <strong>“USB JTAG/serial debug unit”</strong> and click Connect.</li>
+    <li>Click <strong>“Install Bell Aid”</strong>.</li>
+    <li>The next window asks <strong>“Erase device”</strong>. <strong>Leave the box unticked</strong> and click <strong>Next</strong>. (Ticking it would delete your settings.)</li>
+    <li>The window <strong>“Confirm Installation”</strong> appears. Click <strong>Install</strong>.</li>
+    <li>Wait until it says <strong>“Installation complete!”</strong>. This takes about 2 minutes. Do not unplug before that. Then click <strong>Next</strong>.</li>
+    <li>Unplug the device.</li>
+    <li>Repeat for every Bell Aid device (sender and all receivers).</li>
+  </ol>
+  <ol id="steps-de" data-lang-block="de" hidden>
+    <li>Verwenden Sie <strong>Chrome oder Edge</strong> auf einem Computer.</li>
+    <li>Stecken Sie <strong>ein</strong> Bell-Aid-Gerät mit einem USB-Kabel an, das auch Daten überträgt (manche reinen Ladekabel funktionieren nicht).</li>
+    <li>Klicken Sie auf <strong>Aktualisieren</strong>.</li>
+    <li>Wählen Sie im sich öffnenden Fenster <strong>„USB JTAG/serial debug unit“</strong> und klicken Sie auf Verbinden.</li>
+    <li>Klicken Sie auf <strong>„Install Bell Aid“</strong>.</li>
+    <li>Im nächsten Fenster steht <strong>„Erase device“</strong>. <strong>Lassen Sie das Kästchen leer</strong> und klicken Sie auf <strong>Next</strong>. (Mit Häkchen würden Ihre Einstellungen gelöscht.)</li>
+    <li>Das Fenster <strong>„Confirm Installation“</strong> erscheint. Klicken Sie auf <strong>Install</strong>.</li>
+    <li>Warten Sie, bis <strong>„Installation complete!“</strong> erscheint. Das dauert etwa 2 Minuten. Vorher nicht abziehen. Klicken Sie danach auf <strong>Next</strong>.</li>
+    <li>Ziehen Sie das Gerät ab.</li>
+    <li>Wiederholen Sie das für jedes Bell-Aid-Gerät (Sender und alle Empfänger).</li>
+  </ol>
+  <p class="note" data-en="The window of your browser may be in English. If you do not see the device in the list, try another USB cable or another USB port."
+     data-de="Das Fenster Ihres Browsers kann englisch sein. Wenn das Gerät nicht in der Liste erscheint, probieren Sie ein anderes USB-Kabel oder einen anderen USB-Anschluss.">The window of your browser may be in English. If you do not see the device in the list, try another USB cable or another USB port.</p>
+</main>
+<footer>
+  <span data-en="Questions? Write to" data-de="Fragen? Schreiben Sie an">Questions? Write to</span> <a href="mailto:request@makehare.com">request@makehare.com</a><br>
+  Makehare
+</footer>
+
+<script>
+(function () {
+  var lang = (navigator.language || "en").toLowerCase().indexOf("de") === 0 ? "de" : "en";
+  var q = new URLSearchParams(location.search).get("lang");
+  if (q === "de" || q === "en") lang = q;
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-en]").forEach(function (e) { e.textContent = e.getAttribute("data-" + l); });
+    document.querySelectorAll("[data-lang-block]").forEach(function (e) { e.hidden = e.getAttribute("data-lang-block") !== l; });
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === l)); });
+    document.title = l === "de" ? "Bell Aid – Firmware-Update" : "Bell Aid – Firmware update";
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.dataset.lang); }); });
+  setLang(lang);
+
+  var supported = "serial" in navigator;
+  if (!supported) {
+    document.getElementById("unsupported").hidden = false;
+    document.getElementById("installer").hidden = true;
+  } else {
+    var s = document.createElement("script");
+    s.type = "module";
+    s.src = "esp-web-tools-10.5.2/install-button.js";
+    document.head.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>

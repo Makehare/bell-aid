@@ -195,8 +195,8 @@ void sender_status_print(void)
     printf("role=sender mac=%02x:%02x:%02x:%02x:%02x:%02x template=", s_mac[0], s_mac[1], s_mac[2], s_mac[3], s_mac[4], s_mac[5]);
     if (s_det.have_tmpl) printf("%.2fs/%u-rings", s_det.tmpl.h.len * (float)DET_FRAME / DET_FS, s_det.tmpl.h.rounds);
     else printf("NO (train it)");
-    printf(" thr=%.2f (trained %.2f) copies=%u alert=%s lr=%s detections=%u db=%.1f score=%.3f key=%02x%02x....\n",
-           s_det.thr, s_det.tmpl.h.thr_pct / 100.0f, cfg_u8("copies", 4), cfg_u8("salert", 1) ? "on" : "off", radio_lr_active() ? "on" : "off",
+    printf(" thr=%.2f (trained %.2f) copies=%u alert=%s heartbeat=%s lr=%s detections=%u db=%.1f score=%.3f key=%02x%02x....\n",
+           s_det.thr, s_det.tmpl.h.thr_pct / 100.0f, cfg_u8("copies", 4), cfg_u8("salert", 1) ? "on" : "off", hb_enabled() ? "on" : "off", radio_lr_active() ? "on" : "off",
            (unsigned)s_detect_count, s_db, s_score, s_key[0], s_key[1]);
 }
 
@@ -228,6 +228,7 @@ void sender_run(void)
     uint32_t seen_detect = 0;
     for (;;) {
         uint32_t now = now_ms();
+        button_set_immediate((alert_dur && now - alert_start < alert_dur) || ui != UI_ARMED);   /* dismiss/training/pairing presses act on release */
         btn_event_t ev = button_poll(now);
 
         if (s_detect_count != seen_detect) {
@@ -239,6 +240,12 @@ void sender_run(void)
         switch (ui) {
         case UI_ARMED:
             if (ev == BTN_SHORT && alerting) alert_dur = 0;            /* dismiss the alert on this unit */
+            else if (ev == BTN_TRIPLE) {                               /* heartbeat on/off (NVS) */
+                hb_set(!hb_enabled());
+                ESP_LOGI(TAG, "heartbeat=%d", hb_enabled());
+                d1(0, 0, 0);
+                leds_hb_confirm(hb_enabled());
+            }
             else if (ev == BTN_SHORT) {
                 sender_cmd_ring(); flash_until = now + 600;
                 if (cfg_u8("salert", 1)) { alert_start = now; alert_dur = DBN_ALERT_TEST_MS; }
@@ -293,7 +300,7 @@ void sender_run(void)
         else if (now < flash_until) d1(0, 60, 0);
         else if (ui == UI_TRAIN) { int ph = (now / 8) % 200; int br = ph < 100 ? ph : 200 - ph; if (s_train_rec) d1(0, 40, 40); else d1(0, 0, 4 + br / 4); }
         else if (ui == UI_PAIR) d1((now / 150) % 2 ? 40 : 0, 0, (now / 150) % 2 ? 40 : 0);
-        else if (now % 3000 < 80) d1(s_det.have_tmpl ? 0 : 20, s_det.have_tmpl ? 10 : 8, 0);   /* green = armed, orange = untrained */
+        else if (now % 3000 < 80 && (!s_det.have_tmpl || hb_enabled())) d1(s_det.have_tmpl ? 0 : 20, s_det.have_tmpl ? 10 : 8, 0);   /* green = armed (heartbeat), orange = untrained (always) */
         else d1(0, 0, 0);
 
         vTaskDelay(pdMS_TO_TICKS(20));

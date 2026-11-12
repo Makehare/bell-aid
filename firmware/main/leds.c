@@ -2,6 +2,8 @@
 #include "board.h"
 #include "led_strip.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include <string.h>
 
 static const char *TAG = "leds";
@@ -51,6 +53,23 @@ void leds_show(void)
     s_scale = dbn_led_limit(out, NUM_LEDS, (float)LED_CAP_MA);
     for (int i = 0; i < NUM_LEDS; i++) led_strip_set_pixel(s_strip, i, out[i * 3], out[i * 3 + 1], out[i * 3 + 2]);
     led_strip_refresh(s_strip);
+}
+
+/* Confirmation of the heartbeat toggle on D1 (blocking: on 0.4 s, off 0.85 s; harmless, ring detection/TX/RX queue run independently, see README). Distinct from training green x3 (bright, 150/150 ms)
+ * and red x3: ON = two quick green blips (100/100 ms, dim), OFF = one slow green fade-out (800 ms), never fully "blinking". */
+void leds_hb_confirm(bool on)
+{
+    if (on) {
+        for (int i = 0; i < 2; i++) {
+            leds_clear(); leds_set(0, 0, 30, 0); leds_show(); vTaskDelay(pdMS_TO_TICKS(100));
+            leds_clear(); leds_show(); vTaskDelay(pdMS_TO_TICKS(100));
+        }
+    } else {
+        for (int s = 20; s >= 0; s--) {
+            leds_clear(); leds_set(0, 0, (uint8_t)(s * 30 / 20), 0); leds_show(); vTaskDelay(pdMS_TO_TICKS(40));
+        }
+        leds_clear(); leds_show();
+    }
 }
 
 float leds_last_scale(void) { return s_scale; }

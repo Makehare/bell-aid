@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include "esp_err.h"
 #include "dbn_common.h"
+#include "dbn_click.h"
 
 typedef enum { ROLE_SENDER = 1, ROLE_RECEIVER = 2 } role_t;
 
@@ -18,6 +19,7 @@ esp_err_t cfg_blob_set_checked(const char *key, const void *buf, size_t len);
 bool      cfg_has(const char *key);
 void      cfg_erase(const char *key);
 /* Keys: role(0 auto,1 sender,2 receiver) thr(percent, user override) copies(3..5) rebc(0/1) lr(0/1)
+ *       hb(0/1, periodic green heartbeat on sender+receiver, default 1)
  *       salert(0/1, sender shows the full-ring alert itself, default 1)
  *       key(8B network key) peer(6B paired sender MAC, receiver) tmpl2(detector template v2 blob)
  *       Obsolete (v1 detector, erased on boot): tmpl, tlen. */
@@ -32,11 +34,19 @@ void  leds_show(void);              /* applies the <= LED_CAP_MA current cap */
 float leds_last_scale(void);
 
 /* ---- button ---- */
-typedef enum { BTN_NONE = 0, BTN_SHORT, BTN_LONG, BTN_VLONG } btn_event_t;
+typedef enum { BTN_NONE = 0, BTN_SHORT, BTN_LONG, BTN_VLONG, BTN_DOUBLE, BTN_TRIPLE } btn_event_t;
 #define BTN_LONG_MS   1500
 #define BTN_VLONG_MS  5000
 void        button_init(void);
-btn_event_t button_poll(uint32_t now_ms);   /* call every ~10-20 ms; event fires on release */
+/* call every ~10-20 ms. LONG/VLONG fire on release. A short press (BTN_SHORT) is reported 400 ms after
+ * the release (multi-click window, see dbn_click.h) unless immediate mode is on (alert, training, pairing:
+ * SHORT fires on release). BTN_TRIPLE = 3 presses, BTN_DOUBLE = 2 or 4+ presses (roles ignore it). */
+btn_event_t button_poll(uint32_t now_ms);
+void        button_set_immediate(bool on);
+/* heartbeat (periodic green "all ok" blip), NVS key "hb", default on */
+bool        hb_enabled(void);
+void        hb_set(bool on);
+void        leds_hb_confirm(bool on);   /* blocking: on = green x2 (0.4 s), off = one green fade-out */
 uint32_t    button_held_ms(uint32_t now_ms);
 bool        button_down(void);
 

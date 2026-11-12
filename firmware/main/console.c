@@ -19,6 +19,7 @@ static void help(void)
            "  thr <30..99>         detection threshold in percent (sender)\n"
            "  copies <3..5>        RING repeats (sender)\n"
            "  alert 0|1            sender lights the full ring on detection/test, default 1 (sender)\n"
+           "  heartbeat 0|1|on|off periodic green \"all ok\" blip on D1, default 1; same as 3 quick button presses (sender+receiver)\n"
            "  record <1..120>      stream <s> seconds of mic audio to the host (tools/record.py) (sender)\n"
            "  ring                 send a TEST ring (sender)\n"
            "  monitor 0|1          live level/score printout (sender)\n"
@@ -44,6 +45,11 @@ static void handle(char *line)
     else if (!strcmp(cmd, "thr") && arg && v >= 30 && v <= 99) { sender_cmd_threshold(v); printf("thr=%d%%\n", v); }
     else if (!strcmp(cmd, "copies") && arg && v >= 3 && v <= 5) { cfg_set_u8("copies", (uint8_t)v); printf("copies=%d\n", v); }
     else if (!strcmp(cmd, "alert") && arg && s_role == ROLE_SENDER) { sender_cmd_alert(v); printf("alert=%d\n", v ? 1 : 0); }
+    else if (!strcmp(cmd, "heartbeat")) {
+        int hv;
+        if (dbn_parse_onoff(arg, &hv)) { hb_set(hv != 0); printf("heartbeat=%s\n", hv ? "on" : "off"); }
+        else printf("usage: heartbeat 0|1 (or on|off); now %s\n", hb_enabled() ? "on" : "off");
+    }
     else if (!strcmp(cmd, "record") && arg && v >= 1 && v <= 120 && s_role == ROLE_SENDER) sender_cmd_record(v);
     else if (!strcmp(cmd, "ring")) sender_cmd_ring();
     else if (!strcmp(cmd, "monitor") && arg) sender_cmd_monitor(v);

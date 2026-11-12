@@ -2,43 +2,41 @@
 
 **Ein Licht, das blinkt, wenn es an der Tür klingelt**
 
-Version 1.2, 7. November 2026, Makehare
+Version 1.3, 12. November 2026, Makehare
 
 ---
 
 ## 1. Was Bell Aid macht
 
-Der **Sender** steht in der Nähe Ihres Türgongs und hört auf dessen Klang. Erkennt er die Klingel, blinkt der Lichtring jedes gekoppelten **Empfängers** in Ihrer Wohnung. Kein WLAN, keine App, keine Cloud: Der Klang wird direkt im Sender gelernt und erkannt. Sender und Empfänger sehen gleich aus; ein Sender versorgt bis zu 5 Empfänger.
-
-![Vorderseite: Lichtring mit Taste in der Mitte](../renders/final/03-front.png){: style="max-height:34mm"}
-
-*Lichtring mit Taste in der Mitte; eine Leuchte des Rings ist die Statusleuchte D1. Rendering des CAD-Modells, kein Foto; Farben können abweichen.*
+Der **Sender** steht in der Nähe Ihres Türgongs und hört auf dessen Klang. Erkennt er die Klingel, blinkt der Lichtring jedes gekoppelten **Empfängers** in Ihrer Wohnung. Kein WLAN, keine App, keine Cloud. Ein Sender versorgt bis zu 5 Empfänger. Eine Leuchte des Rings ist die Statusleuchte D1.
 
 ## 2. Was Sie brauchen
 
-- Den fertig gebauten Sender und einen oder mehrere Empfänger, jeweils im Standfuß (siehe Bauanleitung)
+- Den fertig gebauten Sender und einen oder mehrere Empfänger, jeweils im Standfuß
 - Pro Gerät: ein USB-C-Kabel und ein USB-Netzteil, **5 V, mindestens 1,5 A**
 
 ## 3. Die Taste
 
-Die Taste reagiert beim **Loslassen**. Während Sie sie gedrückt halten, leuchtet D1 nach 1,5 s **gelb** und nach 5 s **magenta**. So wissen Sie, wann Sie loslassen.
+Die Taste reagiert beim **Loslassen**; ein kurzer Druck wirkt etwa 0,4 s später, weil ein zweiter Druck folgen könnte. Während Sie sie gedrückt halten, leuchtet D1 nach 1,5 s **gelb** und nach 5 s **magenta**. So wissen Sie, wann Sie loslassen.
 
 | Drücken | Sender | Empfänger |
 |---|---|---|
 | Kurz (< 1,5 s) | Testklingeln senden (Sender blinkt 3 s mit); beim Blinken: Blinken beenden | Stumm an/aus; beim Blinken: Blinken beenden |
 | Lang (bei Gelb loslassen) | Anlernen starten | Eigenes Licht testen (3 s) |
 | Sehr lang (bei Magenta loslassen) | Koppeln (30 s) | Koppeln (60 s) |
+| 3-mal kurz hintereinander (jede Pause bis zu 0,4 s) | Grünes Licht (Heartbeat) an/aus | Grünes Licht (Heartbeat) an/aus |
 
-> [!TIP]
-> Halten Sie beim Drücken den Standfuß fest, sonst kippt das Gerät um.
+Dreifachdruck: D1 zeigt 2-mal grün (an) oder einmal langsam grün ausblenden (aus). Jedes Gerät merkt sich seine Einstellung, auch nach dem Ausstecken. Zwei oder vier und mehr Drücke bewirken nichts.
+
+**Tipp:** Halten Sie beim Drücken den Standfuß fest, sonst kippt das Gerät um.
 
 ## 4. Einrichten
 
 **1. Einstecken.** Heben Sie das Gerät aus dem Standfuß und stecken Sie das Kabel ein, während Sie das Gerät in der Hand halten. Setzen Sie es dann in den Standfuß, hängen Sie das Kabel in den J-Schlitz in der Rückwand ein und führen Sie es nach unten und hinten weg. Zum Ausstecken: Kabel aushängen, Gerät herausheben, dann den Stecker ziehen.
 
-![USB-C-Kabel, in den Schlitz an der Rückseite des Standfußes eingehängt](../renders/final/05-detail-usb-c-j-slot.png){: style="max-height:30mm"}
+![USB-C-Kabel, in den Schlitz an der Rückseite des Standfußes eingehängt](../renders/final/05-detail-usb-c-j-slot.png){: style="max-height:13mm"}
 
-*Rückansicht, Standfuß durchsichtig dargestellt: Kabel eingesteckt und in den Schlitz eingehängt. Rendering des CAD-Modells, kein Foto.*
+*Rückansicht, Standfuß durchsichtig: Kabel im Schlitz. Rendering des CAD-Modells, kein Foto.*
 
 **2. Sender festlegen.** Jedes Gerät startet als Empfänger. So machen Sie ein Gerät zum Sender: Gerät in der Hand halten (außerhalb des Standfußes, wie in Schritt 1), Taste gedrückt halten, Kabel einstecken und weitere 5 s halten. D1 leuchtet gelb, blinkt dann 3-mal grün, und das Gerät startet als Sender neu. Auf demselben Weg wird es wieder zum Empfänger.
 
@@ -59,20 +57,21 @@ Die Taste reagiert beim **Loslassen**. Während Sie sie gedrückt halten, leucht
 5. **Prüfen:** einige Sekunden warten und noch einmal klingeln. Der ganze Ring des Senders und die Empfänger müssen blinken. Falls nicht, erneut anlernen.
 
 > [!NOTE]
-> Bei einer sehr kurzen Klingel (ein einzelnes „Ding“) kann das Klicken des Klingelknopfs mitgelernt werden. Schlägt die Prüfung immer wieder fehl: Lassen Sie jemand anderen bei geschlossener Tür klingeln, während Sie beim Sender bleiben, und lernen Sie neu an.
+> Bei einer sehr kurzen Klingel (ein einzelnes „Ding“) kann das Klicken des Klingelknopfs mitgelernt werden. Schlägt die Prüfung immer wieder fehl: Lassen Sie jemand anderen bei geschlossener Tür klingeln und lernen Sie neu an.
 
 ## 5. Im Alltag
 
-Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (Test: 3 s): weiß, dann sechs orange Lichter im Uhrzeigersinn. Ein kurzer Druck beendet es nur an diesem Gerät. Ein stumm geschalteter Empfänger zeigt nur Testklingeln an, bis Sie ihn wieder lautschalten oder ausstecken.
+Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (Test: 3 s): weiß, dann sechs orange Lichter im Uhrzeigersinn. Ein kurzer Druck beendet es nur an diesem Gerät. Ein stummer Empfänger zeigt nur Testklingeln, bis Sie ihn wieder laut schalten oder ausstecken.
 
 | Statusleuchte D1 | Sender | Empfänger |
 |---|---|---|
-| Alle 3 s kurz grün | Bereit | Bereit (gekoppelt) |
+| Alle 3 s kurz grün (Heartbeat) | Bereit | Bereit (gekoppelt) |
 | Orange | Noch keine Klingel gelernt | Nicht gekoppelt |
 | Ganzer Ring blinkt | Klingel erkannt oder Test gesendet | Klingel erkannt |
 | Dauerhaft schwach rot | | Stumm |
 | Magenta / schnell blau blinkend | Koppeln | Wartet auf Kopplung |
 | Blau pulsierend, türkis, grünes Blinken | Anlernen: wartet, hört zu, Klingeln erfasst | |
+| 2-mal grün / einmal langsam grün ausblenden | Dreifachdruck: Heartbeat an / aus | Dreifachdruck: Heartbeat an / aus |
 | 3-mal grün / 3-mal rot | Anlernen gespeichert / fehlgeschlagen | Gekoppelt |
 
 ## 6. Schnelle Hilfe
@@ -83,15 +82,24 @@ Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (
 | Orange Leuchte | Empfänger: koppeln (4, Schritt 3). Sender: anlernen (4, Schritt 5). |
 | Test kommt nicht an | Empfänger neu koppeln; näher am Sender testen (Wände kosten Reichweite). |
 | Klingel nicht erkannt | Am Standort neu anlernen, Mikrofonloch frei lassen. Kurze Klingel: Hinweis in 4. |
+| Grünes Blinken stört nachts | Taste an jedem Gerät 3-mal drücken; erneut 3-mal schaltet es wieder ein. |
 | Blinkt ohne Klingeln | In ruhigem Raum mit 3-mal Klingeln neu anlernen. |
 
-## 7. Sicherheit, Funkdaten und Entsorgung
+## 7. Software aktualisieren
 
-**Verwendung:** nur als optisches Türklingelsignal im Haushalt. **Open-Source-Selbstbauprojekt:** Bau und Nutzung auf eigene Gefahr; es ist kein zertifiziertes Produkt.
+Einstellungen und Kopplung bleiben erhalten. Reagiert das Licht danach nicht mehr auf Ihre Klingel, bringen Sie dem Gerät den Klingelton erneut bei (Abschnitt 4, Schritt 5).
+
+1. **Ein** Gerät per USB-Datenkabel anstecken, <https://makehare.github.io/bell-aid/update/> in **Chrome oder Edge** öffnen, **Aktualisieren** klicken.
+2. **USB JTAG/serial debug unit** wählen, Verbinden, **Install Bell Aid**; **Erase device** leer lassen (sonst gehen Einstellungen verloren), **Next**, **Install**; bei **Installation complete!** (ca. 2 Min.) **Next**.
+3. Abziehen; jedes Gerät einzeln wiederholen.
+
+## 8. Sicherheit, Funkdaten und Entsorgung
+
+**Verwendung:** nur als optisches Türklingelsignal im Haushalt. **Open-Source-Selbstbauprojekt:** Bau und Nutzung auf eigene Gefahr, kein zertifiziertes Produkt.
 
 - Nur in trockenen Innenräumen; fern von Wasser, Hitze und direkter Sonne.
-- **Kein Rauch- oder Brandmelder** und kein Ersatz dafür; nicht verwenden, wo ein verpasstes Signal gefährlich wäre.
-- Kein Spielzeug, nicht für kleine Kinder. Vor dem Öffnen des Gehäuses und bei Schäden ausstecken.
+- **Kein Rauch- oder Brandmelder** und kein Ersatz dafür; nicht nutzen, wo ein verpasstes Signal gefährlich wäre.
+- Kein Spielzeug, nicht für kleine Kinder. Vor dem Öffnen und bei Schäden ausstecken.
 
 | Technische Daten | |
 |---|---|
@@ -102,6 +110,6 @@ Klingelt es, blinken Sender und jeder Empfänger 15 s lang mit dem ganzen Ring (
 | Open-Source-Dateien | https://github.com/Makehare/bell-aid |
 
 ![Durchgestrichene Mülltonne](img/weee-bin.svg){: style="float:left; height:9mm; margin:0.5mm 3mm 0 0"}
-**Entsorgung:** Die durchgestrichene Mülltonne bedeutet: nicht in den Hausmüll; geben Sie das Gerät bei einer Sammelstelle für Elektrogeräte ab (z. B. Wertstoffhof).
+**Entsorgung:** Die durchgestrichene Mülltonne bedeutet: nicht in den Hausmüll, sondern zur Elektrogeräte-Sammelstelle.
 
-**Vor der Abgabe:** Das Gerät speichert keine personenbezogenen Daten, nur Rolle, Kopplungsdaten und gelernten Klingelton. Zum Löschen spielen Sie das vollständige Firmware-Image noch einmal auf (Bauanleitung, Abschnitt 6.2).
+**Vor der Abgabe:** Das Gerät speichert keine personenbezogenen Daten, nur Rolle, Kopplung und Klingelton. Löschen: das vollständige Firmware-Image neu aufspielen (Bauanleitung, 6.2).

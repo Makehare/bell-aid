@@ -26,9 +26,9 @@ static bool load_pairing(void)
 
 void receiver_status_print(void)
 {
-    printf("role=receiver mac=%02x:%02x:%02x:%02x:%02x:%02x paired=%s peer=%02x:%02x:%02x:%02x:%02x:%02x muted=%d rebroadcast=%u lr=%s events=%u last_rssi=%d\n",
+    printf("role=receiver mac=%02x:%02x:%02x:%02x:%02x:%02x paired=%s peer=%02x:%02x:%02x:%02x:%02x:%02x muted=%d heartbeat=%s rebroadcast=%u lr=%s events=%u last_rssi=%d\n",
            s_mac[0], s_mac[1], s_mac[2], s_mac[3], s_mac[4], s_mac[5], s_paired ? "yes" : "NO",
-           s_peer[0], s_peer[1], s_peer[2], s_peer[3], s_peer[4], s_peer[5], s_muted, cfg_u8("rebc", 1),
+           s_peer[0], s_peer[1], s_peer[2], s_peer[3], s_peer[4], s_peer[5], s_muted, hb_enabled() ? "on" : "off", cfg_u8("rebc", 1),
            radio_lr_active() ? "on" : "off", (unsigned)s_events, s_last_rssi);
 }
 
@@ -41,7 +41,7 @@ static void status_pixel(uint32_t now, uint32_t pair_until, bool flashing)
     else if (now < pair_until) { bool on = (now / 150) % 2; leds_set(0, 0, 0, on ? 50 : 0); }
     else if (!s_paired) { if (now % 1500 < 120) leds_set(0, 40, 15, 0); }          /* orange blink: unpaired */
     else if (s_muted) leds_set(0, 25, 0, 0);                                       /* steady red: muted */
-    else if (now % 3000 < 60) leds_set(0, 0, 8, 0);                                /* green heartbeat */
+    else if (hb_enabled() && now % 3000 < 60) leds_set(0, 0, 8, 0);               /* green heartbeat (off with triple press) */
 }
 
 void receiver_run(void)
@@ -55,10 +55,16 @@ void receiver_run(void)
 
     for (;;) {
         uint32_t now = now_ms();
-        btn_event_t ev = button_poll(now);
         bool flashing = now - flash_start < flash_dur && flash_dur;
+        button_set_immediate(flashing);                            /* dismissing a flash must not wait for the multi-click window */
+        btn_event_t ev = button_poll(now);
 
-        if (ev == BTN_SHORT) {
+        if (ev == BTN_TRIPLE) {                                    /* heartbeat on/off (NVS) */
+            hb_set(!hb_enabled());
+            ESP_LOGI(TAG, "heartbeat=%d", hb_enabled());
+            leds_clear(); leds_show();
+            leds_hb_confirm(hb_enabled());
+        } else if (ev == BTN_SHORT) {
             if (flashing) flash_dur = 0;                           /* dismiss */
             else { s_muted = !s_muted; ESP_LOGI(TAG, "muted=%d", s_muted); }
         } else if (ev == BTN_LONG) { flash_start = now; flash_dur = FLASH_TEST_MS; }       /* local test */

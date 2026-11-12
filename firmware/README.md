@@ -21,6 +21,14 @@ Update (unit already set up): only the app at offset 0x20000. This keeps role, p
 
     esptool.py --chip esp32s3 write_flash 0x20000 dist/doorbell-app.bin
 
+**Web updater (v1.3, for non-technical users).** `docs/update/` holds a browser page (ESP Web Tools 10.5.2, vendored in `docs/update/esp-web-tools-10.5.2/`, no CDN; Chrome/Edge) that writes only `doorbell-app.bin` at 0x20000 and keeps all settings as long as the user leaves the "Erase device" box unticked (`new_install_prompt_erase: true` is required: with false ESP Web Tools erases the whole flash on install). Published by GitHub Pages from `/docs` at https://makehare.github.io/bell-aid/update/. Release steps:
+
+1. Bump the top heading in `RELEASE-NOTES.md` (`## vX.Y`), run `sh tools/build.sh`.
+2. Run `sh tools/sync_web_update.sh`. It copies `dist/doorbell-app.bin` to `docs/update/`, writes the version into `manifest.json` and `index.html`, and then runs `tools/check_web_update.py`. It fails if the sha256 differs from `dist/`, the offset is not 0x20000, there is more than one part, the erase prompt is off, or the vendored library or font licences are missing. If HEAD has a `v*` tag it must match the release notes.
+3. Commit `docs/update/` together with `dist/`. The normal publish flow pushes it to the public repo. Never copy files into the public repo by hand.
+
+`python3 tools/test_check_web_update.py` tests the checker itself (bad manifests must be rejected). The page needs no build; to try it locally: `python3 -m http.server --directory ../docs/update`.
+
 **Warning:** the merged image erases all settings (role, pairing key, learned sound, threshold); every receiver must be paired again afterwards.
 
 Console (115200 not needed, USB CDC): any serial terminal on the board's USB port; type `help`.
@@ -45,11 +53,19 @@ Both roles use all 12 pixels (universal population). When idle, the sender uses 
 
 | Press | Sender | Receiver |
 |-------|--------|----------|
-| Short (<1.5 s) | Send a TEST ring (also: finish/abort training) | Toggle mute. While flashing: dismiss the flash only |
+| Short (<1.5 s), 1 press | Send a TEST ring (also: finish/abort training). Runs 0.4 s after release (multi-click window) | Toggle mute (0.4 s after release). While flashing: dismiss the flash only, immediately |
+| Triple (3 short presses, each gap <= 0.4 s; the 20 ms polling can stretch this by one poll, pinned in `test_click`) | Heartbeat on/off (v1.3), stored in NVS | Heartbeat on/off (v1.3), stored in NVS |
+| Double (2 presses) or 4+ presses | Ignored (nothing happens) | Ignored (nothing happens) |
 | Long (1.5-5 s) | Start training | Local test flash (3 s) |
 | Very long (>5 s) | Pairing mode (30 s) | Pairing mode (60 s) |
 
-D1 turns yellow while the long threshold is reached and magenta at the very-long threshold, so you know when to release. Events fire on release.
+D1 turns yellow while the long threshold is reached and magenta at the very-long threshold, so you know when to release. Long and very long fire on release without delay.
+
+**Triple press = heartbeat on/off (v1.3).** Toggles the periodic green "all ok" blip of both roles. Confirmation on D1: green x2 (two quick dim blips) = heartbeat on, one slow green fade-out (about 1 s) = heartbeat off. Default on; stored in NVS (`hb`), so it survives power loss. Only the green blip is suppressed: orange (no template / unpaired), blue (pairing), the receiver's steady dim red (muted), all alerts and training feedback stay. Console: `heartbeat 0|1`, `status` shows `heartbeat=on|off`; anything else than 0, 1, on or off prints the usage and changes nothing.
+
+*The confirmation pauses the main loop for 0.4 s (on) or 0.85 s (off) and this is harmless:* detection runs in its own task on the sender (audio task, and the `tx` task sends the RING copies), so a ring is still detected and sent during the confirmation. On the receiver the radio driver queues incoming packets (16 slots) and the loop handles them right after the confirmation, so a ring is shown at most 0.85 s late, never lost. Only button handling waits.
+
+**Click timing (v1.3).** A short press is decided 0.4 s after release, because a second press may follow. Exceptions without delay: dismissing a running alert flash (sender and receiver), and short presses during training and sender pairing (finish/abort, cancel). Pressing three times during an alert therefore dismisses it on the first press and does not toggle. A series with a gap above 0.4 s counts as separate presses. Implementation: `components/dbn_common/dbn_click.c` (pure C, host test `test/host/test_click.c`).
 
 ## Training the doorbell (sender)
 
@@ -80,7 +96,7 @@ Close any other serial monitor first. Ring the bell 3 times during the recording
 
 The `TRAIN` line shows how the rings were cut (`rings_s=`), each `FILE` line the number of matches and the peak score.
 
-Sender LED: green blip every 3 s = armed, orange blip = no template yet. On a detection the sender plays the full-ring alert (see below).
+Sender LED: green blip every 3 s = armed (heartbeat; can be turned off with a triple press), orange blip = no template yet (always shown). On a detection the sender plays the full-ring alert (see below).
 
 ## Pairing
 
@@ -100,7 +116,7 @@ Receivers only act on packets from the sender they are paired to, identified by 
 - Sender alert (v1.2, `alert 1`, default on; `alert 0` = old behaviour, D1 flashes white for 0.6 s only): on a detection the sender plays the exact same full-ring alert as a receiver (`dbn_alert_pixel`, one shared function): 800 ms cycle of all 12 pixels white 300 ms, off 100 ms, six amber pixels chasing clockwise 400 ms, for 15 s. A short press of the sender button during the alert stops it on this unit. The test button (short press when idle) sends a TEST ring and plays the 3 s alert on the sender too. The alert only runs in the idle (armed) state, never during training or pairing. The setting is stored in NVS (`salert`) and survives reboots; the radio is not delayed by the alert. Idle status blips (pixel 0) are unchanged.
 - Receiver flash: 15 s of white flash + amber chase, then stops. A muted receiver ignores RING but still shows TEST (so the link can be checked). Mute is RAM only (cleared on reboot).
 - LED current: estimated at 20 mA per colour channel at 255 (WS2812B); the whole frame is scaled down to <= 600 mA (full white 12 px = 720 mA -> 83 %). Verify the real per-pixel current on the bench (`LED_CAP_MA`, `DBN_LED_MA_PER_CH_FULL`).
-- Status pixel D1 on receiver: green heartbeat = ok, steady dim red = muted, orange blink = unpaired, blue blink = pairing.
+- Status pixel D1 on receiver: green heartbeat = ok (off with a triple press, v1.3), steady dim red = muted, orange blink = unpaired, blue blink = pairing. Heartbeat confirmation: green x2 = on, one green fade-out = off.
 
 ### ESP-NOW Long Range (LR) on ESP32-S3
 
@@ -108,7 +124,7 @@ Supported: ESP-IDF 5.4 documents LR for all ESP32-series chips except C2, and th
 
 ## Console commands
 
-`status`, `role auto|sender|receiver`, `thr 30..99`, `copies 3..5`, `alert 0|1`, `record 1..120`, `ring`, `monitor 0|1`, `cleartemplate`, `rebroadcast 0|1`, `lr 0|1`, `unpair`, `newkey`, `reboot`, `help`.
+`status`, `role auto|sender|receiver`, `thr 30..99`, `copies 3..5`, `alert 0|1`, `heartbeat 0|1|on|off`, `record 1..120`, `ring`, `monitor 0|1`, `cleartemplate`, `rebroadcast 0|1`, `lr 0|1`, `unpair`, `newkey`, `reboot`, `help`.
 
 ## Detector (components/detector, pure C)
 

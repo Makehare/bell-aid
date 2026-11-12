@@ -1,0 +1,13 @@
+{
+  "name": "Bell Aid",
+  "version": "1.3",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        { "path": "doorbell-app.bin", "offset": 131072 }
+      ]
+    }
+  ]
+}

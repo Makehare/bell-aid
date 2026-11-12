@@ -51,6 +51,15 @@ int main(void)
       dbn_alert_pixel(350, 0, 12, c); CHECK(!c[0] && !c[1] && !c[2], "alert off phase");
       dbn_alert_pixel(400, 0, 12, c); CHECK(c[0] == 255 && c[1] == 140 && c[2] == 0, "alert chase starts at pixel 0"); }
     CHECK(DBN_ALERT_RING_MS == 15000 && DBN_ALERT_TEST_MS == 3000, "alert durations");
+    { int v = 7;
+      CHECK(dbn_parse_onoff("1", &v) && v == 1, "onoff 1");
+      CHECK(dbn_parse_onoff("0", &v) && v == 0, "onoff 0");
+      CHECK(dbn_parse_onoff("on", &v) && v == 1, "onoff on");
+      CHECK(dbn_parse_onoff("OFF", &v) && v == 0, "onoff OFF");
+      v = 7;
+      const char *bad[] = {NULL, "", "abc", "2", "-1", "10", "01", "1x", "on1", "o", " 1"};
+      for (unsigned i = 0; i < sizeof(bad) / sizeof(bad[0]); i++)
+          CHECK(!dbn_parse_onoff(bad[i], &v) && v == 7, "onoff rejects '%s'", bad[i] ? bad[i] : "(null)"); }
     printf(fails ? "PROTO TESTS FAILED\n" : "PROTO TESTS PASSED\n");
     return fails != 0;
 }
